@@ -30,3 +30,7 @@
 .header-nav > *:hover {
   color: #aacfd0;
 }
+
+.header-nav > *:focus {
+  color: #aacfd0;
+}

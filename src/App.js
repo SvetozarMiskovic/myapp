@@ -13,7 +13,7 @@ function App() {
         <Header />
 
         <Routes>
-          <Route path="/" element={<Pocetna />} exact />
+          <Route path="/myapp" element={<Pocetna />} exact />
           <Route path="/npm-packages" element={<FormBuilder />} />
           <Route path="/tools" element={<Tools />} />
         </Routes>

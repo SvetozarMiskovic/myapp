@@ -1,0 +1,32 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #34495e;
+  color: #f4f7f7;
+  width: 500px;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  margin-bottom: 1rem;
+}
+.header-text {
+  margin: 0;
+}
+.header .header-nav {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
+  padding: 0;
+  padding-left: 2.5rem;
+}
+.header-nav > * {
+  text-decoration: none;
+  color: #f4f7f7;
+  padding-right: 2.5rem;
+}
+.header-nav > *:hover {
+  color: #aacfd0;
+}

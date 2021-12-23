@@ -1,0 +1,77 @@
+.pocetna {
+  background-color: #34495e;
+  color: #f4f7f7;
+  border-radius: 1rem;
+  display: flex;
+  gap: 3rem;
+}
+.pocetna-naslov {
+  display: flex;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+.pocetna-opis {
+  display: flex;
+  flex-direction: column;
+  margin-right: 1rem;
+}
+
+.opis-1,
+.opis-2 {
+  text-align: center;
+  font-size: 1.1rem;
+}
+.pocetna-ime-ikona,
+.pocetna-github-ikona,
+.pocetna-email-ikona,
+.pocetna-instagram-ikona,
+.pocetna-broj-ikona {
+  font-size: 1.7rem;
+  margin: 0.4rem;
+}
+.pocetna-opis-naslov {
+  text-align: center;
+  font-size: 1.3rem;
+}
+.html,
+.css,
+.js,
+.react {
+  font-size: 3.5rem;
+  margin: 0.4rem;
+}
+
+.tehnologije {
+  display: flex;
+
+  justify-content: space-evenly;
+}
+.pocetna-ime,
+.pocetna-github,
+.pocetna-email,
+.pocetna-instagram,
+.pocetna-broj {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: rgba(175, 175, 175, 0.103);
+  margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
+  margin-left: 0.8rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.pocetna-ime:hover,
+.pocetna-github:hover,
+.pocetna-email:hover,
+.pocetna-instagram:hover,
+.pocetna-broj:hover {
+  background-color: #8bb1b3;
+}
+.ime,
+.github,
+.email,
+.instagram,
+.broj {
+  font-size: 1.2rem;
+}

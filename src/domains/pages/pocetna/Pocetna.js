@@ -1,13 +1,46 @@
 import React from 'react';
 import '../../../styles/Pocetna.css';
-function Pocetna() {
+function Pocetna(props) {
   return (
     <div className="pocetna">
+      <ul className="languages">
+        <li
+          onClick={e => {
+            const language = e.target.textContent;
+            props.changeLanguage(language.toLowerCase());
+          }}
+        >
+          Serbian
+        </li>
+        <li
+          onClick={e => {
+            const language = e.target.textContent;
+            props.changeLanguage(language.toLowerCase());
+          }}
+        >
+          English
+        </li>
+      </ul>
       <div className="pocetna-kontakt">
-        <h3 className="pocetna-naslov">KONTAKT INFORMACIJE</h3>
+        <h3 className="pocetna-naslov">
+          {props.lang === 'serbian'
+            ? props.infoSerbian.contactInfo
+            : props.infoEnglish.contactInfo}
+        </h3>
         <div className="pocetna-ime">
           <i className="fas fa-signature pocetna-ime-ikona"></i>
           <span className="ime">Svetozar Miskovic</span>
+          <div
+            className="copy-btn"
+            onClick={e => {
+              navigator.clipboard.writeText(
+                e.currentTarget.parentElement.innerText
+              );
+              alert('Copied Succesfully!');
+            }}
+          >
+            <i className="far fa-clipboard"></i>
+          </div>
         </div>
         <div
           className="pocetna-email"
@@ -41,15 +74,30 @@ function Pocetna() {
         <div className="pocetna-broj">
           <i className="fas fa-phone pocetna-broj-ikona"></i>
           <span className="broj">063/791-630</span>
+          <div
+            className="copy-btn"
+            onClick={e => {
+              navigator.clipboard.writeText(
+                e.currentTarget.parentElement.innerText
+              );
+              alert('Copied Succesfully!');
+            }}
+          >
+            <i className="far fa-clipboard"></i>
+          </div>
         </div>
       </div>
       <div className="pocetna-opis">
-        <h3 className="pocetna-opis-naslov">KRATKI OPIS</h3>
+        <h3 className="pocetna-opis-naslov">
+          {props.lang === 'serbian'
+            ? props.infoSerbian.shortDesc
+            : props.infoEnglish.shortDesc}
+        </h3>
         <div className="pocetna-opis-text">
           <p className="opis-1">
-            Moje ime je Svetozar Miskovic, imam 23 godine,<br></br>zivim i radim
-            u Banja Luci. Developmentom se bavim poslednjih<br></br>
-            godinu dana i stekao sam znanje u sledecim tehnologijama:
+            {props.lang === 'serbian'
+              ? props.infoSerbian.descInfo1
+              : props.infoEnglish.descInfo1}
           </p>
           <div className="tehnologije">
             <i className="fab fa-html5 html"></i>
@@ -58,8 +106,9 @@ function Pocetna() {
             <i className="fab fa-react react"></i>
           </div>
           <p className="opis-2">
-            Mozete da me kontakirate klikom na email, putem instagrama ili
-            pozivom na broj!
+            {props.lang === 'serbian'
+              ? props.infoSerbian.descInfo1
+              : props.infoEnglish.descInfo1}
           </p>
         </div>
       </div>

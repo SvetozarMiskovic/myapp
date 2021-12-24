@@ -5,21 +5,48 @@
   display: flex;
   gap: 3rem;
 }
+.pocetna-kontakt {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  border-right: 1px solid white;
+  align-items: center;
+  padding-bottom: 1rem;
+}
 .pocetna-naslov {
   display: flex;
   justify-content: center;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
 }
 .pocetna-opis {
   display: flex;
   flex-direction: column;
   margin-right: 1rem;
+  width: 50%;
 }
 
+.languages {
+  display: flex;
+  gap: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  list-style: none;
+  color: #34495e;
+  cursor: pointer;
+  font-size: 1.4rem;
+  margin: 0;
+  padding: 0.5rem;
+}
+
+.languages > *:hover {
+  color: white;
+}
 .opis-1,
 .opis-2 {
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 1.4rem;
+  line-break: strict;
 }
 .pocetna-ime-ikona,
 .pocetna-github-ikona,
@@ -31,7 +58,7 @@
 }
 .pocetna-opis-naslov {
   text-align: center;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
 }
 .html,
 .css,
@@ -46,12 +73,33 @@
 
   justify-content: space-evenly;
 }
+.copy-btn {
+  position: absolute;
+  height: 100%;
+  background-color: #f4f7f79d;
+  right: 0;
+  color: #34495e;
+  font-size: 1.5rem;
+  border-left: 1px solid white;
+  padding-right: 4px;
+  padding-left: 4px;
+  border-top-right-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+  transition: 0.4s ease-in;
+}
+
+.copy-btn:hover {
+  transition: 0.4s ease-out;
+  background-color: #8bb1b3;
+  color: #f4f7f7;
+}
 
 .pocetna-ime,
 .pocetna-github,
 .pocetna-email,
 .pocetna-instagram,
 .pocetna-broj {
+  width: 80%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -61,6 +109,8 @@
   margin-left: 0.8rem;
   border-radius: 0.5rem;
   cursor: pointer;
+  position: relative;
+  transition: 0.4s ease-in;
 }
 .pocetna-ime:hover,
 .pocetna-github:hover,
@@ -68,11 +118,12 @@
 .pocetna-instagram:hover,
 .pocetna-broj:hover {
   background-color: #8bb1b3;
+  transition: 0.4s ease-out;
 }
 .ime,
 .github,
 .email,
 .instagram,
 .broj {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }

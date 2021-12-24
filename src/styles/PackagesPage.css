@@ -1,0 +1,49 @@
+.packages-page {
+  background-color: #34495e;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.3rem;
+  color: #f4f7f7;
+  display: flex;
+}
+
+.form-builder-container {
+  background-color: #5da0a2;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding: 0.1rem 1.5rem 1.5rem 1.5rem;
+  width: 40%;
+  border-radius: 0.2rem;
+  border: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  transition: 0.4s ease-out;
+}
+
+.form-builder-container:hover {
+  transition: 0.4s ease-in;
+  background-color: #f4f7f7;
+  color: #34495e;
+}
+
+.form-builder-title {
+  font-size: 1.5rem;
+  margin: 0.3rem;
+  text-decoration: none;
+  justify-self: center;
+  color: #34495e;
+  cursor: pointer;
+}
+.form-builder-title:hover {
+  transition: 0.2s ease-in;
+
+  color: #5da0a2;
+}
+
+.form-builder-description {
+  text-align: center;
+  margin: 0.3rem;
+  font-size: 1rem;
+}

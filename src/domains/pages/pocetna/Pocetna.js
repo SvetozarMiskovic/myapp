@@ -29,7 +29,7 @@ function Pocetna(props) {
         </h3>
         <div className="pocetna-ime">
           <i className="fas fa-signature pocetna-ime-ikona"></i>
-          <span className="ime">Svetozar Miskovic</span>
+          <span className="ime">Svetozar Mišković</span>
           <div
             className="copy-btn"
             onClick={e => {
@@ -107,8 +107,8 @@ function Pocetna(props) {
           </div>
           <p className="opis-2">
             {props.lang === 'serbian'
-              ? props.infoSerbian.descInfo1
-              : props.infoEnglish.descInfo1}
+              ? props.infoSerbian.descInfo2
+              : props.infoEnglish.descInfo2}
           </p>
         </div>
       </div>

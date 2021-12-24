@@ -1,9 +1,10 @@
 import React from 'react';
+import AddInput from './AddInput';
 
 function FormBuilder() {
   return (
-    <div>
-      <h1>Some dummy text</h1>
+    <div className="form-builder">
+      <AddInput />
     </div>
   );
 }

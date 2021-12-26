@@ -30,7 +30,7 @@ function InputHolder(props) {
               }}
             ></input>
             <span>
-              {inp.edit === true ? (
+              {inp.edit ? (
                 <i
                   onClick={e => {
                     const targetInp = parseInt(e.target.id);

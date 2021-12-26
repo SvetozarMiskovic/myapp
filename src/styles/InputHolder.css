@@ -1,0 +1,84 @@
+form {
+  position: relative;
+  margin-top: 0.7rem;
+  padding: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  background-color: #34495e;
+}
+.single-input {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.edit-pick {
+  position: absolute;
+  background-color: #34495e;
+  left: 0;
+  top: 100%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  width: 30%;
+  border-bottom-left-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+}
+.edit-list p {
+  border-bottom: 1px solid white;
+  font-size: 1rem;
+  font-style: bold;
+  margin: 0;
+  padding-top: 0.3rem;
+  color: #aacfd0;
+}
+.option {
+  border-bottom: 1px solid white;
+  padding: 0.2rem;
+}
+.option:hover {
+  color: #34495e;
+  background-color: white;
+  cursor: pointer;
+}
+.edit-list {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 1.2rem;
+}
+.single-input span {
+  display: flex;
+  font-size: 2rem;
+  gap: 0.5rem;
+  padding-left: 0.3rem;
+}
+.single-input span > i {
+  color: white;
+  cursor: pointer;
+  padding: 0.1rem;
+}
+
+.fa-check-square {
+  width: 36px;
+}
+
+.single-input input[type='text'],
+input[type='submit'],
+input[type='email'],
+input[type='number'],
+input[type='password'] {
+  border: hidden;
+  outline: none;
+  height: 2rem;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.submit-form {
+  margin-top: 1.5rem;
+  cursor: pointer;
+}

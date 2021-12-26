@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Route, Routes, useParams } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './styles/App.css';
 import Header from './domains/header/Header';
 import Pocetna from './domains/pages/pocetna/Pocetna';
@@ -57,8 +57,8 @@ function App() {
               />
             }
           />
-          <Route path="/npm-packages/" element={<PackagesPage />} exact />
-          <Route path="npm-packages/:formbuilder" element={<FormBuilder />} />
+          <Route path="/npm-packages/*" element={<PackagesPage />} exact />
+
           <Route path="/tools" element={<Tools />} />
         </Routes>
       </div>

@@ -1,18 +1,32 @@
 .packages-page {
-  background-color: #34495e;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
+}
+.packages-container {
+  background-color: #34495e;
   padding: 1rem;
   border-radius: 0.3rem;
   color: #f4f7f7;
-  display: flex;
-}
+  margin-bottom: 2rem;
 
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+}
+.packages-display {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .form-builder-container {
+  justify-self: flex-start;
   background-color: #5da0a2;
-  padding-left: 2rem;
-  padding-right: 2rem;
   padding: 0.1rem 1.5rem 1.5rem 1.5rem;
-  width: 40%;
+  position: relative;
   border-radius: 0.2rem;
   border: 1px solid white;
   display: flex;

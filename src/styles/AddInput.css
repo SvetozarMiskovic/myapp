@@ -1,31 +1,26 @@
 .add-input {
   background-color: #34495e;
   color: #f4f7f7;
-  padding: 0.5rem;
+
   border-radius: 0.3rem;
   display: flex;
 
   font-size: 1.5rem;
   align-items: center;
-  justify-content: space-evenly;
-  width: 100%;
-  height: 100%;
+  justify-content: space-between;
 }
 
 .add-input h3 {
-  width: 100%;
+  padding: 0 2rem 0 2rem;
   margin: 0;
+  text-align: center;
 }
-.add-input span {
-  height: 100%;
-  width: 20%;
-}
+
 .add-input i {
   padding: 0.6rem;
   margin: 0;
   font-size: 3rem;
   border-left: 1px white solid;
-  height: 100%;
 }
 .add-input i:hover {
   cursor: pointer;

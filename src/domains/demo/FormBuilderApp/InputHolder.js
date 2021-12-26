@@ -5,8 +5,8 @@ function InputHolder(props) {
     <form
       autoComplete="off"
       onSubmit={e => {
-        console.log(props.results);
         e.preventDefault();
+        localStorage.setItem('INPUTS', JSON.stringify(props.inputs));
       }}
     >
       {props.inputs.map(inp => {

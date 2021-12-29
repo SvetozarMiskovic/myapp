@@ -6,8 +6,10 @@ import Pocetna from './domains/pages/pocetna/Pocetna';
 import Tools from './domains/pages/tools/Tools';
 import PackagesPage from './domains/pages/packages/PackagesPage';
 import FormBuilder from './domains/demo/FormBuilderApp/FormBuilder';
+import DisplayForm from './domains/demo/FormBuilderApp/DisplayForm';
 
 function App() {
+  const [selectedForm, setSelectedForm] = useState({});
   const [lang, setLang] = useState('serbian');
   const [infoSerbian] = useState({
     welcome: 'Dobrodošli!',
@@ -37,32 +39,37 @@ function App() {
     setLang(language);
   }
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Header
-          lang={lang}
-          infoSerbian={infoSerbian}
-          infoEnglish={infoEnglish}
+    <div className="App">
+      <Header lang={lang} infoSerbian={infoSerbian} infoEnglish={infoEnglish} />
+
+      <Routes>
+        <Route
+          path="/myapp"
+          element={
+            <Pocetna
+              changeLanguage={changeLanguageHandler}
+              lang={lang}
+              infoSerbian={infoSerbian}
+              infoEnglish={infoEnglish}
+            />
+          }
         />
-
-        <Routes>
+        <Route
+          path="/npm-packages/*"
+          element={<PackagesPage setSelectedForm={setSelectedForm} />}
+        >
           <Route
-            path="/myapp"
-            element={
-              <Pocetna
-                changeLanguage={changeLanguageHandler}
-                lang={lang}
-                infoSerbian={infoSerbian}
-                infoEnglish={infoEnglish}
-              />
-            }
+            path="formbuilder/"
+            element={<FormBuilder setSelectedForm={setSelectedForm} />}
           />
-          <Route path="/npm-packages/*" element={<PackagesPage />} exact />
-
-          <Route path="/tools" element={<Tools />} />
-        </Routes>
-      </div>
-    </BrowserRouter>
+        </Route>
+        <Route path="/tools" element={<Tools />} />
+        <Route
+          path={`/displayform:${selectedForm.formID}`}
+          element={<DisplayForm selectedForm={selectedForm} />}
+        />
+      </Routes>
+    </div>
   );
 }
 

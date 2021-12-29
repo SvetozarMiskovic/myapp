@@ -1,0 +1,55 @@
+.form-holder {
+  margin: 0.5rem 0 0.5rem 0;
+  background-color: #34495e;
+  cursor: pointer;
+  color: white;
+  border-radius: 0.3rem;
+}
+
+.form-list {
+  margin: 0;
+  list-style: none;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+hr {
+  margin: 0;
+}
+
+.form-item-holder {
+  display: flex;
+  align-items: center;
+}
+
+.form-item-holder i {
+  font-size: 1.4rem;
+  padding: 0.2rem 0.3rem 0.2rem 0.3rem;
+  border-bottom: 1px white solid;
+}
+.delete-form:hover,
+.edit-form:hover {
+  color: #34495e;
+  background-color: white;
+}
+.form-item {
+  border-bottom: 1px solid white;
+  border-right: 1px solid white;
+  font-size: 1.2rem;
+  width: 100%;
+  text-decoration: none;
+  color: white;
+}
+.form-item:hover {
+  background-color: white;
+  color: #34495e;
+  cursor: pointer;
+}
+
+.form-holder h4 {
+  font-size: 1.5rem;
+  margin: 0;
+  padding: 0.6rem;
+  text-align: center;
+}

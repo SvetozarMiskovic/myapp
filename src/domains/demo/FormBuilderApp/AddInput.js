@@ -1,5 +1,6 @@
-import react from 'react';
+import React from 'react';
 import '../../../styles/AddInput.css';
+
 function AddInput(props) {
   return (
     <div className="add-input">

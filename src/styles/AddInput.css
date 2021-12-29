@@ -11,9 +11,9 @@
 }
 
 .add-input h3 {
-  padding: 0 2rem 0 2rem;
+  align-self: center;
   margin: 0;
-  text-align: center;
+  padding-left: 30%;
 }
 
 .add-input i {

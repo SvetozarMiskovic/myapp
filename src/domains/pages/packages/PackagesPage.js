@@ -1,14 +1,13 @@
-import react from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
+import React from 'react';
+import { Link, Outlet } from 'react-router-dom';
 import '../../../styles/PackagesPage.css';
-import FormBuilder from '../../demo/FormBuilderApp/FormBuilder';
 
 function PackagesPage() {
   return (
     <div className="packages-page">
       <div className="packages-container">
         <div className="form-builder-container">
-          <Link className="form-builder-title" to="npm-packages/:formbuilder">
+          <Link className="form-builder-title" to="formbuilder">
             Form Builder Package
           </Link>
 
@@ -19,9 +18,7 @@ function PackagesPage() {
         </div>
       </div>
       <div className="packages-display">
-        <Routes>
-          <Route path="npm-packages/:formbuilder" element={<FormBuilder />} />
-        </Routes>
+        <Outlet />
       </div>
     </div>
   );

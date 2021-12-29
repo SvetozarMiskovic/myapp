@@ -1,14 +1,50 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../../../styles/InputHolder.css';
+
 function InputHolder(props) {
+  useEffect(() => {
+    localStorage.setItem('FORMS', JSON.stringify(props.forms));
+  });
   return (
     <form
       autoComplete="off"
       onSubmit={e => {
         e.preventDefault();
-        localStorage.setItem('INPUTS', JSON.stringify(props.inputs));
+        const id = new Date().getTime();
+        const formDesc = document.querySelector('.form-desc').textContent;
+        const formName = document.querySelector('.form-name').textContent;
+        props.setForms(
+          props.forms.concat([
+            {
+              formName: formName,
+              formDesc: formDesc,
+              inputs: [...props.inputs],
+              formID: id,
+            },
+          ])
+        );
+        alert(
+          'Succesfully submited the form! Click on "Saved Forms" to view them!'
+        );
       }}
     >
+      <div className="form-info">
+        <h3
+          suppressContentEditableWarning={true}
+          contentEditable="true"
+          className="form-name"
+        >
+          Name of the form
+        </h3>
+        <h5
+          suppressContentEditableWarning={true}
+          contentEditable="true"
+          className="form-desc"
+        >
+          Description of the form
+        </h5>
+      </div>
+
       {props.inputs.map(inp => {
         return (
           <div key={inp.id} className="single-input">

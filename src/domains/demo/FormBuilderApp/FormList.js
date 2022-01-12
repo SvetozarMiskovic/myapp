@@ -49,6 +49,15 @@ function FormList(props) {
                   key={form.formID + 2}
                   id={form.formID}
                   className="far fa-edit edit-form"
+                  onClick={e => {
+                    const editBtn = e.target;
+                    const editID = parseInt(editBtn.id);
+                    const formToEdit = props.forms.find(
+                      form => form.formID === editID
+                    );
+                    props.setFormEdit(formToEdit);
+                    props.setIsEditing(!props.isEditing);
+                  }}
                 ></i>
               </div>
             );

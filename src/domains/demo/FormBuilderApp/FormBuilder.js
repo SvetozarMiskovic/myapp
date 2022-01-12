@@ -3,17 +3,20 @@ import AddInput from './AddInput';
 import InputHolder from './InputHolder';
 import '../../../styles/FormBuilder.css';
 import FormList from './FormList';
-import { Route, Routes } from 'react-router-dom';
-import DisplayForm from './DisplayForm';
+import EditForm from './EditForm';
 
 function FormBuilder(props) {
+  const [formEdit, setFormEdit] = useState();
   const [sugTypes, setSugTypes] = useState([
     'email',
     'password',
     'text',
     'number',
   ]);
-
+  const [initialInfo, setInitialinfo] = useState({
+    name: 'Name of the form',
+    desc: 'Description of the form...',
+  });
   const [forms, setForms] = useState(() => {
     const lsforms = JSON.parse(localStorage.getItem('FORMS'));
     return lsforms ? lsforms : [];
@@ -92,23 +95,42 @@ function FormBuilder(props) {
       <AddInput inputs={inputs} setInputs={setInputs} forms={forms} />
       {forms.length > 0 ? (
         <FormList
+          isEditing={props.isEditing}
+          setIsEditing={props.setIsEditing}
           forms={forms}
           setForms={setForms}
           deleteForm={deleteFormHandler}
           setSelectedForm={props.setSelectedForm}
+          formEdit={formEdit}
+          setFormEdit={setFormEdit}
         />
       ) : null}
-      <InputHolder
-        setPlaceholder={setPlaceholderHandler}
-        setType={setTypeHandler}
-        deleteInput={deleteInputHanlder}
-        toggleEdit={toggleEditHandler}
-        sugTypes={sugTypes}
-        setInputs={setInputs}
-        inputs={inputs}
-        forms={forms}
-        setForms={setForms}
-      />
+      {!props.isEditing ? (
+        <InputHolder
+          initialInfo={initialInfo}
+          isEditing={props.isEditing}
+          setIsEditing={props.setIsEditing}
+          setPlaceholder={setPlaceholderHandler}
+          setType={setTypeHandler}
+          deleteInput={deleteInputHanlder}
+          toggleEdit={toggleEditHandler}
+          sugTypes={sugTypes}
+          setInputs={setInputs}
+          inputs={inputs}
+          forms={forms}
+          setForms={setForms}
+        />
+      ) : (
+        <EditForm
+          setFormEdit={setFormEdit}
+          formEdit={formEdit}
+          sugTypes={sugTypes}
+          isEditing={props.isEditing}
+          setIsEditing={props.setIsEditing}
+          forms={forms}
+          setForms={setForms}
+        />
+      )}
     </div>
   );
 }

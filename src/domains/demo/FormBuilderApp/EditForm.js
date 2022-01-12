@@ -1,70 +1,100 @@
-import React, { useEffect } from 'react';
-import '../../../styles/InputHolder.css';
+import React from 'react';
 
-function InputHolder(props) {
-  useEffect(() => {
-    localStorage.setItem('FORMS', JSON.stringify(props.forms));
-  });
+function EditForm(props) {
+  const editInputs = props.formEdit.inputs;
+
+  function switchEdit(id) {
+    editInputs.map(edit => {
+      if (edit.id === id) {
+        edit.edit = !edit.edit;
+      }
+    });
+    props.setFormEdit({
+      formName: props.formEdit.formName,
+      formDesc: props.formEdit.formDesc,
+      formID: props.formEdit.formID,
+      inputs: [...editInputs],
+    });
+  }
+
+  function deleteEditInput(id) {
+    props.setFormEdit({
+      formName: props.formEdit.formName,
+      formDesc: props.formEdit.formDesc,
+      formID: props.formEdit.formID,
+      inputs: editInputs.filter(i => {
+        return i.id !== id;
+      }),
+    });
+  }
+
+  function setEditPlaceholder(id, placeholder) {
+    editInputs.map(i => {
+      if (i.id === id) {
+        i.placeholder = placeholder;
+      }
+
+      props.setFormEdit({
+        formName: props.formEdit.formName,
+        formDesc: props.formEdit.formDesc,
+        formID: props.formEdit.formID,
+        inputs: [...editInputs],
+      });
+    });
+  }
+
+  function setType(id, type) {
+    editInputs.map(i => {
+      if (i.id === id) {
+        i.type = type;
+      }
+      props.setFormEdit({
+        formName: props.formEdit.formName,
+        formDesc: props.formEdit.formDesc,
+        formID: props.formEdit.formID,
+        inputs: [...editInputs],
+      });
+    });
+  }
 
   return (
     <form
+      id={props.formEdit.formID}
       autoComplete="off"
       onSubmit={e => {
         e.preventDefault();
-        const id = new Date().getTime();
         const formDesc = document.querySelector('.form-desc').textContent;
         const formName = document.querySelector('.form-name').textContent;
-        props.setForms(
-          props.forms.concat([
-            {
-              formName: formName,
-              formDesc: formDesc,
-              inputs: [...props.inputs],
-              formID: id,
-            },
-          ])
-        );
-        alert(
-          'Succesfully submited the form! Click on "Saved Forms" to view them!'
-        );
-        props.setInputs([
-          {
-            placeholder: 'Some random text',
-            type: 'text',
-            id: 1,
-            edit: false,
-          },
-          {
-            placeholder: 'Some random text',
-            type: 'text',
-            id: 2,
-            edit: false,
-          },
-        ]);
-        document.querySelector('.form-name').textContent =
-          props.initialInfo.name;
-        document.querySelector('.form-desc').textContent =
-          props.initialInfo.desc;
+
+        props.setFormEdit({
+          formDesc: formDesc,
+          formName: formName,
+          formID: props.formEdit.formID,
+          inputs: [...props.formEdit.inputs],
+        });
+
+        console.log(props.formEdit);
+        props.setIsEditing(!props.isEditing);
       }}
     >
+      <h1 className="edit-mode">EDIT MODE!</h1>
       <div className="form-info">
         <h3
           suppressContentEditableWarning={true}
           contentEditable="true"
           className="form-name"
         >
-          {props.initialInfo.name}
+          {props.formEdit.formName}
         </h3>
         <h5
           suppressContentEditableWarning={true}
           contentEditable="true"
           className="form-desc"
         >
-          {props.initialInfo.desc}
+          {props.formEdit.formDesc}
         </h5>
       </div>
-
-      {props.inputs.map(inp => {
+      {props.formEdit.inputs?.map(inp => {
         return (
           <div key={inp.id} className="single-input">
             <input
@@ -79,7 +109,7 @@ function InputHolder(props) {
                   const value = e.target.value;
 
                   if (value) {
-                    props.setPlaceholder(targetInp, value);
+                    setEditPlaceholder(targetInp, value);
                   }
                 } else return;
               }}
@@ -87,35 +117,36 @@ function InputHolder(props) {
             <span>
               {inp.edit ? (
                 <i
+                  id={inp.id}
+                  className="far fa-check-square"
                   onClick={e => {
-                    const targetInp = parseInt(e.target.id);
-                    props.toggleEdit(targetInp);
+                    const targetID = parseInt(e.target.id);
+                    switchEdit(targetID);
                     const inputField =
                       e.target.parentElement.previousElementSibling;
 
                     inputField.value = '';
                   }}
-                  id={inp.id}
-                  className="far fa-check-square"
                 ></i>
               ) : (
                 <i
-                  onClick={e => {
-                    const targetInp = parseInt(e.target.id);
-                    props.toggleEdit(targetInp);
-                  }}
                   id={inp.id}
                   className="far fa-edit"
+                  onClick={e => {
+                    const targetID = parseInt(e.target.id);
+
+                    switchEdit(targetID);
+                  }}
                 ></i>
               )}
 
               <i
-                onClick={e => {
-                  const targetInp = parseInt(e.target.id);
-                  props.deleteInput(targetInp);
-                }}
                 id={inp.id}
                 className="far fa-trash-alt"
+                onClick={e => {
+                  const targetID = parseInt(e.target.id);
+                  deleteEditInput(targetID);
+                }}
               ></i>
             </span>
             {inp.edit ? (
@@ -125,16 +156,16 @@ function InputHolder(props) {
                   {props.sugTypes.map(t => {
                     return (
                       <div
+                        className="option"
+                        key={t}
                         onClick={e => {
                           const element = e.target;
                           const type = element.textContent;
                           const parentElement = e.target.parentElement;
                           const id = parseInt(parentElement.id);
 
-                          props.setType(id, type);
+                          setType(id, type);
                         }}
-                        className="option"
-                        key={t}
                       >
                         {t}
                       </div>
@@ -149,10 +180,10 @@ function InputHolder(props) {
       <input
         type="submit"
         className="submit-form"
-        value="Submit the form!"
+        value="Save the edited form!"
       ></input>
     </form>
   );
 }
 
-export default InputHolder;
+export default EditForm;

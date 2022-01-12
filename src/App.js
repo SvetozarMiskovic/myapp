@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import './styles/App.css';
 import Header from './domains/header/Header';
 import Pocetna from './domains/pages/pocetna/Pocetna';
@@ -9,8 +9,9 @@ import FormBuilder from './domains/demo/FormBuilderApp/FormBuilder';
 import DisplayForm from './domains/demo/FormBuilderApp/DisplayForm';
 
 function App() {
-  const [selectedForm, setSelectedForm] = useState({});
-  const [lang, setLang] = useState('serbian');
+  const [selectedForm, setSelectedForm] = useState();
+  const [isEditing, setIsEditing] = useState(false);
+  const [lang, setLang] = useState('english');
   const [infoSerbian] = useState({
     welcome: 'Dobrodošli!',
     home: 'Početna',
@@ -38,6 +39,7 @@ function App() {
   function changeLanguageHandler(language) {
     setLang(language);
   }
+
   return (
     <div className="App">
       <Header lang={lang} infoSerbian={infoSerbian} infoEnglish={infoEnglish} />
@@ -60,14 +62,22 @@ function App() {
         >
           <Route
             path="formbuilder/"
-            element={<FormBuilder setSelectedForm={setSelectedForm} />}
+            element={
+              <FormBuilder
+                isEditing={isEditing}
+                setIsEditing={setIsEditing}
+                setSelectedForm={setSelectedForm}
+              />
+            }
           />
         </Route>
         <Route path="/tools" element={<Tools />} />
-        <Route
-          path={`/displayform:${selectedForm.formID}`}
-          element={<DisplayForm selectedForm={selectedForm} />}
-        />
+        {selectedForm ? (
+          <Route
+            path={`/displayform:${selectedForm.formID}`}
+            element={<DisplayForm selectedForm={selectedForm} />}
+          />
+        ) : null}
       </Routes>
     </div>
   );

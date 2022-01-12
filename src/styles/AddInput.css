@@ -9,7 +9,9 @@
   align-items: center;
   justify-content: space-between;
 }
-
+.fa-plus-square:hover {
+  color: #aacfd0;
+}
 .add-input h3 {
   align-self: center;
   margin: 0;

@@ -92,7 +92,7 @@ function FormBuilder(props) {
 
   return (
     <div className="form-builder">
-      <AddInput inputs={inputs} setInputs={setInputs} forms={forms} />
+      <AddInput inputs={inputs} setInputs={setInputs} forms={forms} formEdit={formEdit} setFormEdit={setFormEdit} isEditing={props.isEditing}/>
       {forms.length > 0 ? (
         <FormList
           isEditing={props.isEditing}
@@ -108,6 +108,7 @@ function FormBuilder(props) {
       {!props.isEditing ? (
         <InputHolder
           initialInfo={initialInfo}
+          setInitialinfo={setInitialinfo}
           isEditing={props.isEditing}
           setIsEditing={props.setIsEditing}
           setPlaceholder={setPlaceholderHandler}

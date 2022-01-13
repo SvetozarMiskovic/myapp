@@ -1,7 +1,7 @@
 import React from 'react';
 
 function EditForm(props) {
-  const editInputs = props.formEdit.inputs;
+  let editInputs = props.formEdit.inputs;
 
   function switchEdit(id) {
     editInputs.map(edit => {
@@ -56,43 +56,93 @@ function EditForm(props) {
       });
     });
   }
+  function setEditName(name){
+    props.setFormEdit({
+      formDesc: props.formEdit.formDesc,
+      formName: name,
+      formID: props.formEdit.formID,
+      inputs: [...editInputs],
+    });
+  }
 
+  function setEditDesc(desc){
+    props.setFormEdit({
+      formDesc: desc,
+      formName: props.formEdit.formName,
+      formID: props.formEdit.formID,
+      inputs: [...editInputs],
+    });
+  }
   return (
     <form
       id={props.formEdit.formID}
       autoComplete="off"
       onSubmit={e => {
         e.preventDefault();
-        const formDesc = document.querySelector('.form-desc').textContent;
-        const formName = document.querySelector('.form-name').textContent;
-
-        props.setFormEdit({
-          formDesc: formDesc,
-          formName: formName,
-          formID: props.formEdit.formID,
-          inputs: [...props.formEdit.inputs],
-        });
-
-        console.log(props.formEdit);
+        
+      
+        const newForms = props.forms.filter(form=>form.formID !== props.formEdit.formID)
+        
+      
+        newForms.push(props.formEdit)
+        props.setForms(newForms)
+        alert('Succesfully edited the form!')
         props.setIsEditing(!props.isEditing);
       }}
     >
       <h1 className="edit-mode">EDIT MODE!</h1>
       <div className="form-info">
-        <h3
-          suppressContentEditableWarning={true}
-          contentEditable="true"
+        <input
+          type={'text'}
+
           className="form-name"
+          onClick={(e)=>{
+           const el = e.target;
+           el.value = '';
+          }}
+          onChange={(e)=>{
+            const el = e.target.value;
+            setEditName(el)
+          }}
+          onBlur={(e)=>{
+            if(e.target.value){
+              return
+            } else {
+
+            
+            const el = e.target;
+            el.value = 'Name of the form'
+          }
+          }}
+          value={props.formEdit.formName}
         >
-          {props.formEdit.formName}
-        </h3>
-        <h5
-          suppressContentEditableWarning={true}
-          contentEditable="true"
+          
+        </input>
+        <input
+          type={'text'}
           className="form-desc"
+          onClick={(e)=>{
+            const el = e.target;
+            el.value = '';
+           }}
+           onBlur={(e)=>{
+            if(e.target.value){
+              return
+            } else {
+
+            
+            const el = e.target;
+            el.value = 'Description of the form'
+          }
+          }}
+           onChange={(e)=>{
+            const el = e.target.value;
+            setEditDesc(el)
+           }}
+           value={props.formEdit.formDesc}
         >
-          {props.formEdit.formDesc}
-        </h5>
+          
+        </input>
       </div>
       {props.formEdit.inputs?.map(inp => {
         return (

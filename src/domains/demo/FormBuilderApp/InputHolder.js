@@ -1,24 +1,31 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../../styles/InputHolder.css';
 
 function InputHolder(props) {
-  useEffect(() => {
+  const [name, setName] = useState('Name of the form')
+  const [desc, setDesc] = useState('Description of the form')
+   useEffect(() => {
     localStorage.setItem('FORMS', JSON.stringify(props.forms));
   });
 
+  function changeName(name){
+    setName(name)
+  }
+  function changeDesc(desc){
+    setDesc( desc)
+  }
   return (
     <form
       autoComplete="off"
       onSubmit={e => {
         e.preventDefault();
         const id = new Date().getTime();
-        const formDesc = document.querySelector('.form-desc').textContent;
-        const formName = document.querySelector('.form-name').textContent;
+        
         props.setForms(
           props.forms.concat([
             {
-              formName: formName,
-              formDesc: formDesc,
+              formName: name,
+              formDesc: desc,
               inputs: [...props.inputs],
               formID: id,
             },
@@ -48,20 +55,54 @@ function InputHolder(props) {
       }}
     >
       <div className="form-info">
-        <h3
-          suppressContentEditableWarning={true}
-          contentEditable="true"
+        <input
+          type={'text'}
           className="form-name"
+          onBlur={(e)=>{
+            if(e.target.value){
+              return
+            } else {
+            const el = e.target;
+            el.value = 'Name of the form'
+          }
+          }}
+          onClick={(e)=>{
+            const el = e.target;
+            el.value = '';
+           }}
+           onChange={(e)=>{
+             const value = e.target.value;           
+             changeName(value)
+           }}
+           
+           value={name}
+           
         >
-          {props.initialInfo.name}
-        </h3>
-        <h5
-          suppressContentEditableWarning={true}
-          contentEditable="true"
+          
+        </input>
+        <input
+          type={'text'}
           className="form-desc"
+          onBlur={(e)=>{
+            if(e.target.value){
+              return
+            } else {           
+            const el = e.target;
+            el.value = 'Description of the form...'
+          }
+          }}
+          onChange={(e)=>{
+            const value = e.target.value;
+           changeDesc(value)
+          }}
+          onClick={(e)=>{
+            const el = e.target;
+            el.value = '';
+           }}
+           value={desc}
         >
-          {props.initialInfo.desc}
-        </h5>
+          
+        </input>
       </div>
 
       {props.inputs.map(inp => {

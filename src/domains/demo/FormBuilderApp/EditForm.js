@@ -1,5 +1,6 @@
 import React from 'react';
-
+import FormInfo from './Edit&Holder comps/FormInfo';
+import SingleInput from './Edit&Holder comps/SingleInput';
 function EditForm(props) {
   let editInputs = props.formEdit.inputs;
 
@@ -78,12 +79,8 @@ function EditForm(props) {
       id={props.formEdit.formID}
       autoComplete="off"
       onSubmit={e => {
-        e.preventDefault();
-        
-      
-        const newForms = props.forms.filter(form=>form.formID !== props.formEdit.formID)
-        
-      
+        e.preventDefault(); 
+        const newForms = props.forms.filter(form=>form.formID !== props.formEdit.formID)         
         newForms.push(props.formEdit)
         props.setForms(newForms)
         alert('Succesfully edited the form!')
@@ -91,140 +88,12 @@ function EditForm(props) {
       }}
     >
       <h1 className="edit-mode">EDIT MODE!</h1>
-      <div className="form-info">
-        <input
-          type={'text'}
-
-          className="form-name"
-          onClick={(e)=>{
-           const el = e.target;
-           el.value = '';
-          }}
-          onChange={(e)=>{
-            const el = e.target.value;
-            setEditName(el)
-          }}
-          onBlur={(e)=>{
-            if(e.target.value){
-              return
-            } else {
-
-            
-            const el = e.target;
-            el.value = 'Name of the form'
-          }
-          }}
-          value={props.formEdit.formName}
-        >
-          
-        </input>
-        <input
-          type={'text'}
-          className="form-desc"
-          onClick={(e)=>{
-            const el = e.target;
-            el.value = '';
-           }}
-           onBlur={(e)=>{
-            if(e.target.value){
-              return
-            } else {
-
-            
-            const el = e.target;
-            el.value = 'Description of the form'
-          }
-          }}
-           onChange={(e)=>{
-            const el = e.target.value;
-            setEditDesc(el)
-           }}
-           value={props.formEdit.formDesc}
-        >
-          
-        </input>
-      </div>
+      <FormInfo name={props.formEdit.formName} changeName={setEditName} changeDesc={setEditDesc} desc={props.formEdit.formDesc}/>
+      
       {props.formEdit.inputs?.map(inp => {
         return (
-          <div key={inp.id} className="single-input">
-            <input
-              className="input-field"
-              id={inp.id}
-              placeholder={inp.placeholder}
-              type={inp.type}
-              onChange={e => {
-                if (inp.edit) {
-                  const targetInp = parseInt(e.target.id);
-
-                  const value = e.target.value;
-
-                  if (value) {
-                    setEditPlaceholder(targetInp, value);
-                  }
-                } else return;
-              }}
-            ></input>
-            <span>
-              {inp.edit ? (
-                <i
-                  id={inp.id}
-                  className="far fa-check-square"
-                  onClick={e => {
-                    const targetID = parseInt(e.target.id);
-                    switchEdit(targetID);
-                    const inputField =
-                      e.target.parentElement.previousElementSibling;
-
-                    inputField.value = '';
-                  }}
-                ></i>
-              ) : (
-                <i
-                  id={inp.id}
-                  className="far fa-edit"
-                  onClick={e => {
-                    const targetID = parseInt(e.target.id);
-
-                    switchEdit(targetID);
-                  }}
-                ></i>
-              )}
-
-              <i
-                id={inp.id}
-                className="far fa-trash-alt"
-                onClick={e => {
-                  const targetID = parseInt(e.target.id);
-                  deleteEditInput(targetID);
-                }}
-              ></i>
-            </span>
-            {inp.edit ? (
-              <div className="edit-pick">
-                <ul id={inp.id} className="edit-list">
-                  <p>Choose input type!</p>
-                  {props.sugTypes.map(t => {
-                    return (
-                      <div
-                        className="option"
-                        key={t}
-                        onClick={e => {
-                          const element = e.target;
-                          const type = element.textContent;
-                          const parentElement = e.target.parentElement;
-                          const id = parseInt(parentElement.id);
-
-                          setType(id, type);
-                        }}
-                      >
-                        {t}
-                      </div>
-                    );
-                  })}
-                </ul>
-              </div>
-            ) : null}
-          </div>
+          <SingleInput key={inp.id} inp={inp} setPlaceholder={setEditPlaceholder} toggleEdit={switchEdit} deleteInput={deleteEditInput} setType={props.setType} sugTypes={props.sugTypes}/>
+          
         );
       })}
       <input

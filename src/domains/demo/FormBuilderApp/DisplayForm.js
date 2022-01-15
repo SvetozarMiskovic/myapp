@@ -51,7 +51,7 @@ function DisplayForm(props) {
       <input
         type="submit"
         className="submit-form"
-        value="Submit the form!"
+        value="Send the form!"
       ></input>
     </form>
   );

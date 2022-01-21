@@ -1,117 +1,153 @@
 import React from 'react';
+import { useState } from 'react';
 import '../../../styles/Pocetna.css';
+import { Layout,Card, Typography, Menu, Dropdown, Button} from 'antd';
+import { Link } from 'react-router-dom';
+import {HomeFilled, FolderOpenFilled, ToolFilled, GithubFilled, InstagramFilled, FacebookFilled, MailFilled, SendOutlined, PhoneFilled, CopyOutlined, InfoCircleOutlined } from '@ant-design/icons'
+import SucAlert from './SucAlert';
+
+const {Content, Sider, Footer} = Layout
+const {Title} = Typography
+
+
 function Pocetna(props) {
+  const [alert, isAlert] = useState(false)
+
+  const aboutMenu=(
+    <Menu style={{textAlign: 'center'}}>
+      <Menu.Item key={'about-menu'} style={{color: '#2375ab'}}>
+        <Title level={5} style={{fontSize: '1rem', display: 'inline', color:'#2375ab'}}>My name is Svetozar Miskovic, I am 24 years old and I work and live in Bosnia and Herzegovina, Banja Luka.<br></br>
+        I've been 1y in Software Development and I've gained knowledge of JS, HTML, CSS and React!<br></br>
+        For any questions, feel free to reach out to me!</Title>
+      </Menu.Item>
+    </Menu>
+  )
+
+  const menu = (
+    <Menu style={{textAlign: 'center'}}>
+      <Menu.Item key={'email-menu'} style={{color:'#2375ab'}} onClick={()=>{
+        window.location = 'mailto:sveto.dev@gmail.com?subject=WS Email'
+      }}>
+        <SendOutlined /> <Title level={3} style={{fontSize: '1rem', display: 'inline', color:'#2375ab'}}>sveto.dev@gmail.com</Title>
+        
+      </Menu.Item>
+    </Menu>
+  )
+  
+  const phoneMenu=(
+    <Menu style={{textAlign: 'center'}}>
+      <Menu.Item key={'phone-menu'} style={{color: '#2375ab'}} onClick={()=>{
+        const number = '(387)63/791-630'
+        navigator.clipboard
+        .writeText(number)
+        .then(()=>{
+          isAlert(!alert)
+          
+        }).catch(()=>{
+          alert('Something went wrong!')
+        }
+        )}}>
+      <CopyOutlined /> <Title level={3} style={{fontSize: '1rem', display: 'inline', color:'#2375ab'}}>(387)63/791-630</Title>
+      </Menu.Item>
+    </Menu>
+  )
+
   return (
     <div className="pocetna">
-      <ul className="languages">
-        <li
-          onClick={e => {
-            const language = e.target.textContent;
-            props.changeLanguage(language.toLowerCase());
-          }}
-        >
-          Serbian
-        </li>
-        <li
-          onClick={e => {
-            const language = e.target.textContent;
-            props.changeLanguage(language.toLowerCase());
-          }}
-        >
-          English
-        </li>
-      </ul>
-      <div className="pocetna-kontakt">
-        <h3 className="pocetna-naslov">
-          {props.lang === 'serbian'
-            ? props.infoSerbian.contactInfo
-            : props.infoEnglish.contactInfo}
-        </h3>
-        <div className="pocetna-ime">
-          <i className="fas fa-signature pocetna-ime-ikona"></i>
-          <span className="ime">Svetozar Mišković</span>
-          <div
-            className="copy-btn"
-            onClick={e => {
-              navigator.clipboard.writeText(
-                e.currentTarget.parentElement.innerText
-              );
-              alert('Copied Succesfully!');
-            }}
-          >
-            <i className="far fa-clipboard"></i>
+      {alert ? <SucAlert alert={alert} isAlert={isAlert}/> : null}
+      <Layout className='layout-homepage'>
+    <Sider className='sidebar' >
+      
+        <div className='header-homepage'>
+          {/* <Title style={{margin: 0}}>Svetozar Miskovic</Title> */}
+          <div className='logo'></div>
+          <Title level={2} style={{margin: 0}}>Front-end Dev</Title>
+          <Title level={3} style={{margin: 0}}>Javascript/React</Title>
+        </div>
+        <div className='links-menu'>
+          <ul>
+            <div className='single-link'>
+              <HomeFilled className='home-filled'/>
+            <Link to='/myapp' className='home-link'>Home</Link>
+            </div>
+            <div className='single-link'>
+            <FolderOpenFilled className='folder-open'/>
+              <Link to='/npm-packages' className='pkg-link'>Packages</Link>
+            </div>
+            <div className='single-link'>
+            <ToolFilled className='tool-filled'/>
+              <Link to='/tools' className='tool-link'>Tools</Link>
+            </div>
+            
+            
+          </ul>
+          <Footer className='footer-sidebar'>
+            <div className='media-links'>
+            <div className='github'>
+            <GithubFilled onClick={()=>{
+              window.open('https://github.com/SvetozarMiskovic', '_blank');
+            }}/>
+            </div>
+            <div className='instagram'>
+            <InstagramFilled onClick={()=>{
+              window.open('https://www.instagram.com/tosveevsot', '_blank');
+            }}/>
+            </div>
+            <div className='facebook'>
+            <FacebookFilled onClick={()=>{
+              window.open('https://www.facebook.com/sveto.miskovic', '_blank');
+            }}/>
+            </div>
+            
+            </div>
+            <Title style={{fontSize: '1rem ', margin: 0, color: 'white'}} level={4} className='created-by'>Created by SM! &copy;2022</Title>
+          </Footer>
+        </div>
+        
+    </Sider>
+    <Content className='main-content'>
+     <Card title={'Contact information!'} className='content-email'  headStyle={{color: 'white', fontWeight: 'bold',fontSize:'1.4rem'}}>
+            <div className='email-container'>
+              <div className='email-section'>
+                <MailFilled style={{color: '#2375ab'}}/>
+                <Title level={4} style={{margin: '0 0 0 0.3rem', padding: 0, fontSize: '1.6rem', color:'#2375ab'}}>My email</Title>
+              </div>
+               <Dropdown overlay={menu} placement='bottomCenter' className='email-dropdown' arrow>
+            
+                 <Button style={{color: '#2375ab'} } className='send-btn'>Send an email!</Button>
+              
+              </Dropdown>
           </div>
-        </div>
-        <div
-          className="pocetna-email"
-          onClick={() => {
-            window.open(
-              'mailto:svetozarmiskovic98@gmail.com?subject=EmailViaWebsite'
-            );
-          }}
-        >
-          <i className="fas fa-envelope pocetna-email-ikona"></i>
-          <span className="email">svetozarmiskovic98@gmail.com</span>
-        </div>
-        <div
-          className="pocetna-github"
-          onClick={() => {
-            window.open('https://github.com/SvetozarMiskovic', '_blank');
-          }}
-        >
-          <i className="fab fa-github pocetna-github-ikona"></i>
-          <span className="github">github.com/SvetozarMiskovic</span>
-        </div>
-        <div
-          className="pocetna-instagram"
-          onClick={() => {
-            window.open('https://www.instagram.com/tosveevsot', '_blank');
-          }}
-        >
-          <i className="fab fa-instagram pocetna-instagram-ikona"></i>
-          <span className="instagram">@tosveevsot</span>
-        </div>
-        <div className="pocetna-broj">
-          <i className="fas fa-phone pocetna-broj-ikona"></i>
-          <span className="broj">063/791-630</span>
-          <div
-            className="copy-btn"
-            onClick={e => {
-              navigator.clipboard.writeText(
-                e.currentTarget.parentElement.innerText
-              );
-              alert('Copied Succesfully!');
-            }}
-          >
-            <i className="far fa-clipboard"></i>
+          <div className='phone-container'>
+            <div className='phone-section'>
+              
+              <PhoneFilled style={{color: '#2375ab', fontSize:'1.6rem'}}/>
+              <Title evel={4} style={{margin: '0 0 0 0.3rem', padding: 0, fontSize: '1.7rem', color:'#2375ab'}}>My phone number</Title>
+            </div>
+            <Dropdown overlay={phoneMenu} placement='bottomCenter' className='phone-dropdown' arrow>
+            
+                 <Button style={{color: '#2375ab'} } className='send-btn'>Give me a call(Whatsapp/Viber)!</Button>
+              
+              </Dropdown>
           </div>
-        </div>
-      </div>
-      <div className="pocetna-opis">
-        <h3 className="pocetna-opis-naslov">
-          {props.lang === 'serbian'
-            ? props.infoSerbian.shortDesc
-            : props.infoEnglish.shortDesc}
-        </h3>
-        <div className="pocetna-opis-text">
-          <p className="opis-1">
-            {props.lang === 'serbian'
-              ? props.infoSerbian.descInfo1
-              : props.infoEnglish.descInfo1}
-          </p>
-          <div className="tehnologije">
-            <i className="fab fa-html5 html"></i>
-            <i className="fab fa-css3-alt css"></i>
-            <i className="fab fa-js-square js"></i>
-            <i className="fab fa-react react"></i>
+          <div className='about-container'>
+            <div className='about-section'>
+              <InfoCircleOutlined style={{color: '#2375ab', fontSize:'1.6rem'}}/>
+              <Title level={4} style={{margin: '0 0 0 0.3rem', padding: 0, fontSize: '1.6rem', color:'#2375ab'}}>About me</Title>
+            </div>
+            <Dropdown overlay={aboutMenu} placement='bottomCenter' className='about-dropdown' arrow>
+            
+                 <Button style={{color: '#2375ab'} } className='send-btn'>Read more!</Button>
+              
+              </Dropdown>
           </div>
-          <p className="opis-2">
-            {props.lang === 'serbian'
-              ? props.infoSerbian.descInfo2
-              : props.infoEnglish.descInfo2}
-          </p>
-        </div>
-      </div>
+          
+     </Card>
+     
+    </Content>
+    </Layout>
+
+
     </div>
   );
 }

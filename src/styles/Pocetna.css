@@ -1,10 +1,230 @@
-.pocetna {
-  background-color: #34495e;
-  color: #f4f7f7;
-  border-radius: 1rem;
-  display: flex;
-  gap: 3rem;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+
+ .pocetna {
+  font-family: 'Poppins', sans-serif;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+    
 }
+
+.main-content{
+  background-image: url(./bgimage.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: none;
+  border: none;
+  outline: none;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.layout-homepage{
+  height: 100vh;
+  overflow: auto;
+  position: relative;
+  z-index: 1;
+  
+}
+.sidebar{
+  background-color: #EAEBEF;
+  box-shadow: 0.4rem 0.2rem 10px rgba(0, 0, 0, 0.479);
+  border-right: 1px black solid;
+}
+
+.header-homepage{
+  background-color: #2374AB;
+  height: 25%;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+}
+
+.header-homepage h1{
+  font-size: 2rem;
+  text-align: center;
+  color: #FCFCFF; 
+  
+}
+.header-homepage h2{
+  text-align: center  ;
+  font-size: 1.6rem;
+  color: #FCFCFF; 
+ 
+}
+
+.header-homepage h3{
+  text-align: center;
+  font-size: 1.3rem;
+  color: #FCFCFF; 
+  
+}
+
+.links-menu ul{
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+}
+
+.links-menu ul > *{
+  border-bottom: 1px solid black;
+
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.links-menu ul > *:hover{
+  background-color: rgb(201, 201, 201);
+  
+}
+.home-link, .pkg-link, .tool-link{
+color: #6E6A6F;
+margin-left: 1rem;
+font-size: 1.2rem;
+}
+
+.home-filled{
+  color: #2374AB;
+}
+
+.folder-open{
+  color:#667761;
+}
+
+.tool-filled{
+  color: #8E4162;
+}
+.footer-sidebar{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #2374AB;
+  border-top: 1px black solid;
+}
+
+.media-links{
+  display: flex;
+  justify-content: center;
+  font-size: 1.2rem;
+  gap: 1rem;
+}
+
+.media-links > *:hover{
+  color: white;
+  cursor: pointer;
+}
+.created-by{
+  
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.content-email{
+  width: 50vw;
+background-color: #2375ab;
+ 
+}
+
+.ant-card-body{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+}
+
+
+
+.email-container{
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+   
+}
+
+.about-container{
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem
+}
+.email-section{
+  background-color: white;
+  
+  padding: 0.6rem;
+  
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  
+}
+.logo{
+  background-image: url(./logo.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 150px;
+  height: 100%;
+  padding: 0; 
+  align-self: center;
+ 
+  
+}
+.suc-copy{
+  position: absolute;
+  z-index: 5;
+  left: 0;
+  width: 100%;
+}
+.send.btn{
+  text-align: center;
+}
+.email-dropdown, .phone-dropdown, .about-dropdown{
+  width: 100%;
+  font-size: 1.2rem;
+  text-align: center;
+  
+}
+.anticon-mail{
+  font-size: 1.5rem;
+}
+.phone-container{
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem
+}
+.phone-section{
+  background-color: white;
+  
+  padding: 0.6rem;
+  
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.about-section{
+  background-color: white;
+  
+  padding: 0.6rem;
+  
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+/*
 .pocetna-kontakt {
   display: flex;
   flex-direction: column;
@@ -126,4 +346,4 @@
 .instagram,
 .broj {
   font-size: 1.4rem;
-}
+} */

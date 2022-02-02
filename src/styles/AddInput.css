@@ -1,29 +1,15 @@
-.add-input {
-  background-color: #34495e;
-  color: #f4f7f7;
-
-  border-radius: 0.3rem;
-  display: flex;
-
-  font-size: 1.5rem;
-  align-items: center;
-  justify-content: space-between;
-}
-.fa-plus-square:hover {
-  color: #aacfd0;
-}
-.add-input h3 {
-  align-self: center;
-  margin: 0;
-  padding-left: 30%;
+.add-input span:hover{
+  
+  color: #2375ab;
+  background-color: white;
+  transition: 0.5s ease;
 }
 
-.add-input i {
-  padding: 0.6rem;
-  margin: 0;
-  font-size: 3rem;
-  border-left: 1px white solid;
+.add-input > span{
+  color: white;
+  transition: 0.5s ease;
 }
-.add-input i:hover {
-  cursor: pointer;
+
+.add-input h3{
+  color: #2375ab;
 }

@@ -2,23 +2,46 @@ import React from 'react';
 import { useState } from 'react';
 import '../../../styles/Pocetna.css';
 import { Layout,Card, Typography, Menu, Dropdown, Button} from 'antd';
+import {HomeFilled, FolderOpenFilled, ToolFilled, GithubFilled, InstagramFilled, FacebookFilled, MailFilled, SendOutlined, PhoneFilled, CopyOutlined, InfoCircleOutlined, GlobalOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom';
-import {HomeFilled, FolderOpenFilled, ToolFilled, GithubFilled, InstagramFilled, FacebookFilled, MailFilled, SendOutlined, PhoneFilled, CopyOutlined, InfoCircleOutlined } from '@ant-design/icons'
+import i18next from 'i18next';
 import SucAlert from './SucAlert';
+import ReactCountryFlag from "react-country-flag"
+import { useTranslation } from 'react-i18next';
 
 const {Content, Sider, Footer} = Layout
 const {Title} = Typography
-
+const languages = [{
+  code: 'en',
+  codeName: 'English',
+  countryCode: 'gb'
+},{
+  code: 'rs',
+  codeName: 'Srpski',
+  countryCode: 'rs'
+}]
 
 function Pocetna(props) {
+  const {t} = useTranslation();
   const [alert, isAlert] = useState(false)
 
+  const langMenu=(
+    <Menu style={{textAlign: 'center'}}>
+      {languages.map(lang=>{
+        return (
+          <Menu.Item style={{fontSize: '1.3rem', display:'flex', textAlign: 'center'}} key={lang.code} onClick={()=>i18next.changeLanguage(lang.code)}>
+            <ReactCountryFlag countryCode={lang.countryCode} style={{marginRight: '0.5rem'}} svg /> <Title level={5} style={{color: '#2375ab'}} data-id={lang.codeName} >{lang.codeName}</Title>
+          </Menu.Item>
+        )
+      })}
+    </Menu>
+  )
   const aboutMenu=(
     <Menu style={{textAlign: 'center'}}>
       <Menu.Item key={'about-menu'} style={{color: '#2375ab'}}>
-        <Title level={5} style={{fontSize: '1rem', display: 'inline', color:'#2375ab'}}>My name is Svetozar Miskovic, I am 24 years old and I work and live in Bosnia and Herzegovina, Banja Luka.<br></br>
-        I've been 1y in Software Development and I've gained knowledge of JS, HTML, CSS and React!<br></br>
-        For any questions, feel free to reach out to me!</Title>
+        <Title level={5} style={{fontSize: '1rem', display: 'inline', color:'#2375ab'}}>{t('read_text1')}<br></br>
+        {t('read_text2')}<br></br>
+        {t('read_text3')}</Title>
       </Menu.Item>
     </Menu>
   )
@@ -59,7 +82,7 @@ function Pocetna(props) {
     <Sider className='sidebar' >
       
         <div className='header-homepage'>
-          {/* <Title style={{margin: 0}}>Svetozar Miskovic</Title> */}
+          
           <div className='logo'></div>
           <Title level={2} style={{margin: 0}}>Front-end Dev</Title>
           <Title level={3} style={{margin: 0}}>Javascript/React</Title>
@@ -68,15 +91,15 @@ function Pocetna(props) {
           <ul>
             <div className='single-link'>
               <HomeFilled className='home-filled'/>
-            <Link to='/myapp' className='home-link'>Home</Link>
+            <Link to='/myapp' className='home-link'>{t('home')}</Link>
             </div>
             <div className='single-link'>
             <FolderOpenFilled className='folder-open'/>
-              <Link to='/npm-packages' className='pkg-link'>Packages</Link>
+              <Link to='/npm-packages' className='pkg-link'>{t('packages')}</Link>
             </div>
             <div className='single-link'>
             <ToolFilled className='tool-filled'/>
-              <Link to='/tools' className='tool-link'>Tools</Link>
+              <Link to='/tools' className='tool-link'>{t('tools')}</Link>
             </div>
             
             
@@ -106,15 +129,18 @@ function Pocetna(props) {
         
     </Sider>
     <Content className='main-content'>
-     <Card title={'Contact information!'} className='content-email'  headStyle={{color: 'white', fontWeight: 'bold',fontSize:'1.4rem'}}>
+      <Dropdown overlay={langMenu} placement='bottomCenter' trigger={['click']} className='lang-dropdown'>
+        <GlobalOutlined style={{position: 'absolute', fontSize: '3rem', zIndex: 5, top: '2rem', right: '2rem', color: '#2375ab', cursor: 'pointer'}}/>
+      </Dropdown>
+     <Card title={t('contact_information')} className='content-info' style={{backgroundColor: '#2375ab'}} headStyle={{color: 'white', fontWeight: 'bold',fontSize:'1.4rem'}}>
             <div className='email-container'>
               <div className='email-section'>
                 <MailFilled style={{color: '#2375ab'}}/>
-                <Title level={4} style={{margin: '0 0 0 0.3rem', padding: 0, fontSize: '1.6rem', color:'#2375ab'}}>My email</Title>
+                <Title level={4} style={{margin: '0 0 0 0.3rem', padding: 0, fontSize: '1.6rem', color:'#2375ab'}}>{t('my_email')}</Title>
               </div>
                <Dropdown overlay={menu} placement='bottomCenter' className='email-dropdown' arrow>
             
-                 <Button style={{color: '#2375ab'} } className='send-btn'>Send an email!</Button>
+                 <Button style={{color: '#2375ab'} } className='send-btn'>{t('send_email')}!</Button>
               
               </Dropdown>
           </div>
@@ -122,22 +148,22 @@ function Pocetna(props) {
             <div className='phone-section'>
               
               <PhoneFilled style={{color: '#2375ab', fontSize:'1.6rem'}}/>
-              <Title evel={4} style={{margin: '0 0 0 0.3rem', padding: 0, fontSize: '1.7rem', color:'#2375ab'}}>My phone number</Title>
+              <Title evel={4} style={{margin: '0 0 0 0.3rem', padding: 0, fontSize: '1.7rem', color:'#2375ab'}}>{t('my_phone')}</Title>
             </div>
             <Dropdown overlay={phoneMenu} placement='bottomCenter' className='phone-dropdown' arrow>
             
-                 <Button style={{color: '#2375ab'} } className='send-btn'>Give me a call(Whatsapp/Viber)!</Button>
+                 <Button style={{color: '#2375ab'} } className='send-btn'>{t('give_a_call')}</Button>
               
               </Dropdown>
           </div>
           <div className='about-container'>
             <div className='about-section'>
               <InfoCircleOutlined style={{color: '#2375ab', fontSize:'1.6rem'}}/>
-              <Title level={4} style={{margin: '0 0 0 0.3rem', padding: 0, fontSize: '1.6rem', color:'#2375ab'}}>About me</Title>
+              <Title level={4} style={{margin: '0 0 0 0.3rem', padding: 0, fontSize: '1.6rem', color:'#2375ab'}}>{t('about_me')}</Title>
             </div>
-            <Dropdown overlay={aboutMenu} placement='bottomCenter' className='about-dropdown' arrow>
+            <Dropdown overlay={aboutMenu} placement='bottomLeft' className='about-dropdown' arrow>
             
-                 <Button style={{color: '#2375ab'} } className='send-btn'>Read more!</Button>
+                 <Button style={{color: '#2375ab'} } className='send-btn'>{t('read_more')}</Button>
               
               </Dropdown>
           </div>

@@ -1,63 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
 .packages-page {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  font-family: 'Poppins', sans-serif;
   width: 100%;
+  overflow: hidden;
 }
-.packages-container {
-  background-color: #34495e;
-  padding: 1rem;
-  border-radius: 0.3rem;
-  color: #f4f7f7;
-  margin-bottom: 2rem;
 
-  position: relative;
-  display: flex;
-  justify-content: flex-start;
+.layout-packages{
+
+    height: 100vh;
+    overflow: auto;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+
 }
-.packages-display {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.form-builder-container {
-  justify-self: flex-start;
-  background-color: #5da0a2;
-  padding: 0.1rem 1.5rem 1.5rem 1.5rem;
-  position: relative;
-  border-radius: 0.2rem;
-  border: 1px solid white;
+.header-layout{
+
+  background-color: #2374AB;
+  height: 25%;
   display: flex;
   flex-direction: column;
-  justify-items: center;
-  align-items: center;
-  transition: 0.4s ease-out;
+  justify-content: space-evenly;
+
 }
 
-.form-builder-container:hover {
-  transition: 0.4s ease-in;
-  background-color: #f4f7f7;
-  color: #34495e;
-}
-
-.form-builder-title {
-  font-size: 1.5rem;
-  margin: 0.3rem;
-  text-decoration: none;
-  justify-self: center;
-  color: #34495e;
-  cursor: pointer;
-}
-.form-builder-title:hover {
-  transition: 0.2s ease-in;
-
-  color: #5da0a2;
-}
-
-.form-builder-description {
+.header-layout h1{
+  font-size: 2rem;
   text-align: center;
-  margin: 0.3rem;
-  font-size: 1rem;
+  color: #FCFCFF; 
+  
+}
+.header-layout h2{
+  text-align: center  ;
+  font-size: 1.6rem;
+  color: #FCFCFF; 
+ 
+}
+
+.header-layout h3{
+  text-align: center;
+  font-size: 1.3rem;
+  color: #FCFCFF; 
+  
+}
+
+.packages-content{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.package-container{
+  height: auto;
+  border-bottom: 1px solid black;
+
+}
+
+.packages-display{
+  max-height: 100%;
+  
+  
+  
+}
+
+.fb-cont:hover{
+  transform: scale(1.02);
+  transition: ease-in 0.3s;
+  
+}
+
+.fb-cont{
+  transform: scale(1);
+  transition: ease-out 0.3s;
 }

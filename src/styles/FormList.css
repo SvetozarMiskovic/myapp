@@ -4,52 +4,68 @@
   cursor: pointer;
   color: white;
   border-radius: 0.3rem;
+  
 }
 
-.form-list {
-  margin: 0;
-  list-style: none;
-  padding: 0;
 
+.form-holder .ant-card-body{
+  margin: 0;
+  padding: 0;
+  gap: 0;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
-hr {
-  margin: 0;
-}
 
-.form-item-holder {
-  display: flex;
-  align-items: center;
-}
-
-.form-item-holder i {
-  font-size: 1.4rem;
-  padding: 0.2rem 0.3rem 0.2rem 0.3rem;
-  border-bottom: 1px white solid;
-}
-.delete-form:hover,
-.edit-form:hover {
-  color: #34495e;
-  background-color: white;
-}
-.form-item {
-  border-bottom: 1px solid white;
-  border-right: 1px solid white;
-  font-size: 1.2rem;
+.form-item-holder{
   width: 100%;
-  text-decoration: none;
-  color: white;
+  
 }
-.form-item:hover {
+.form-holder .ant-card-head{
+  margin-bottom: 0;
+}
+.form-item-holder:hover{
   background-color: white;
-  color: #34495e;
-  cursor: pointer;
+  color: #2375ab;
+}
+.single-form{
+  justify-content: space-between;
+  display: flex;
+  width: 100%;
+  align-content: flex-start;
+  
+}
+.form-item{
+  font-weight: bold;
+  font-size: 1.6rem;
+  width: 100%;
+  border-bottom: 1px white solid;
+  border-right: 1px white solid;
+  background-color: #2375ab;
+  color: white;
+  padding-left: 0.4rem;
+  transition: 0.4s ease-in-out;
+}
+.form-item:hover{
+  color: #2375ab;
+  background-color: white;
+  transition: 0.6s ease-in-out;
 }
 
-.form-holder h4 {
-  font-size: 1.5rem;
-  margin: 0;
-  padding: 0.6rem;
-  text-align: center;
+.option-btns{
+  display: flex;
+  gap: 0.6rem;
+  border-bottom: 1px solid white;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+
+
+.delete-form:hover{
+  color: rgb(206, 1, 1);
+}
+
+.edit-form:hover{
+  color: rgb(180, 180, 0);
 }

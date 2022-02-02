@@ -1,26 +1,20 @@
-form {
-  position: relative;
-  margin-top: 0.7rem;
-  padding: 0.2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  background-color: #34495e;
-}
-
 .fa-edit:hover,
 .fa-trash-alt:hover,
 .fa-check-square:hover {
   color: #aacfd0;
+  
 }
-.form-info {
-  border-bottom: 1px white solid;
-  width: 100%;
 
-  display: flex;
-  flex-direction: column;
+.fa-trash-alt:hover{
+  color: rgb(206, 1, 1);
+}
 
-  align-content: center;
+.fa-edit:hover, .fa-check-square:hover{
+  color: rgb(180, 180, 0);
+}
+
+.fa-edit, .fa-check-square{
+  width: 32px;
 }
 .single-input {
   position: relative;
@@ -30,8 +24,8 @@ form {
 }
 .edit-pick {
   position: absolute;
-  background-color: #34495e;
-  left: 0;
+  background-color: #2375ab;
+  left: 1rem;
   top: 100%;
   color: white;
   display: flex;
@@ -48,14 +42,16 @@ form {
   font-style: bold;
   margin: 0;
   padding-top: 0.3rem;
-  color: #aacfd0;
+  color: white;
+  font-weight: bolder;
 }
 .option {
   border-bottom: 1px solid white;
   padding: 0.2rem;
+  font-weight: bolder;
 }
 .option:hover {
-  color: #34495e;
+  color: #2375ab;
   background-color: white;
   cursor: pointer;
 }
@@ -78,29 +74,8 @@ form {
   padding: 0.1rem;
 }
 
-.fa-check-square {
-  width: 36px;
-}
-.form-name,
-.form-desc {
-  margin: 0;
-  color: white;
-  outline: none;
-  border:0.2px solid white ;
-  background: transparent;
-  padding: 0;
-  width: 50%;
-  font-size: 1.5rem;
-  padding: 0.2rem;
-}
-.form-name{
-  margin-bottom: 0.2rem;
-  outline: none;
-}
-.form-desc {
-  font-size: 1rem;
-  margin-bottom: 0.2rem;
-}
+
+
 .single-input input[type='text'],
 .single-input input[type='submit'],
 .single-input input[type='email'],
@@ -114,18 +89,24 @@ form {
   width: 100%;
 }
 
-.submit-form {
-  margin-top: 1.5rem;
-  cursor: pointer;
-  margin: 1rem;
-  padding: 0.3rem;
-  font-family: inherit;
-  font-size: 1.3rem;
-}
+
 .edit-mode {
   position: absolute;
   right: 0;
   top: 0;
   margin: 0 0.5rem 0 0;
   color: white;
+}
+.submit-form{
+  color: white
+
+}
+
+.submit-form:focus{
+  color: white;
+}
+.submit-form:hover{
+  border-top: 1px white solid;
+  background-color: white;
+  color: #2375ab;
 }

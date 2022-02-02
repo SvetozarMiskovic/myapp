@@ -1,0 +1,23 @@
+{
+    "home": "Pocetna",
+    "packages": "Paketi",
+    "tools": "Alati",
+    "created_by": "Created by SM! copy&; 2022",
+    "contact_information": "Kontakt informacije",
+    "my_email": "Moj email",
+    "my_phone": "Moj broj telefona",
+    "about_me": "O meni",
+    "send_email": "Posaljite email!",
+    "give_a_call": "Nazovite me(Whatsapp/Viber)!",
+    "read_more": "Procitaj jos!",
+    "read_text1": "Moje ime je Svetozar Miskovic, imam 24 godine, zivim i radim u Banja Luci.",
+    "read_text2": "Bavim se Software Development-om vec godinu dana i savladao sam sledece tehnologije: JS, HTML, CSS i React!",
+    "read_text3": "U slucaju bilo kakvih pitanja, mozete da me kontaktirate!",
+    "copy_alert": "Uspjesno kopirano!",
+    "under_construction": "IZRADA U TOKU",
+    "site_under_construction": "Izrada ove stranice je jos u toku!",
+    "choose_package": "Odaberite paket",
+    "form_builder": "Form Builder",
+    "fbuilder_desc1": "Napravite formu",
+    "fbuilder_desc2": "prema vasim potrebama"
+}

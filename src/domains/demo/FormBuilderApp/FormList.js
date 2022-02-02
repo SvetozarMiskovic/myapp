@@ -1,27 +1,33 @@
 import React, { useState } from 'react';
-
+import { Card, Button } from 'antd';
 import '../../../styles/FormList.css';
-import SavedForms from './FormList comps/SavedForms';
 import SingleForm from './FormList comps/SingleForm';
-function FormList(props) {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className="form-holder">
-      <SavedForms setOpen={setOpen} open={open}/>
-      
+import EmptyList from './FormList comps/EmptyList';
 
-      {open ? (
-        <ul className="form-list">
-          <hr></hr>
-          {props.forms.map(form => {
-            return (
-              <SingleForm key={form.id} form={form} forms={props.forms} isEditing={props.isEditing} setIsEditing={props.setIsEditing} setFormEdit={props.setFormEdit} deleteForm={props.deleteForm} setSelectedForm={props.setSelectedForm}/>
-            );
-          })}
-        </ul>
-      ) : null}
-    </div>
-  );
-}
+function FormList(props) {
+    
+    return (
+      <Card title={'Saved forms'} extra={<Button type='secondary' style={{color: '#2375ab', fontWeight: 'bold'}} onClick={()=>{
+        props.setForms([])
+      }}>Delete all</Button>}headStyle={{color: 'white',fontWeight: 'bolder', fontSize: '1.4rem', borderBottom: '1px solid white'}} style={{width: '100%', backgroundColor: '#2375ab', height:'100%', }} className="form-holder">  
+      {props.forms.length > 0 ? null : <EmptyList/>}
+      {<ul className="form-list" style={{margin: 0, padding: 0, flexWrap: 'wrap', display:'flex', flexDirection: 'column',  width: '100%'}}>
+        
+            {props.forms.map(form => {
+              return (
+                <SingleForm key={form.formID} form={form} forms={props.forms} isEditing={props.isEditing} setIsEditing={props.setIsEditing} setFormEdit={props.setFormEdit} deleteForm={props.deleteForm} setSelectedForm={props.setSelectedForm}/>
+                
+              );
+            })}
+      </ul>}
+        
+      </Card>
+    );
+  
+   
+    
+  }
+  
+
 
 export default FormList;

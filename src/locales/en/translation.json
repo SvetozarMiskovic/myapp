@@ -1,0 +1,24 @@
+{   
+    "home": "Home",
+    "packages": "Packages",
+    "tools": "Tools",
+    "created_by": "Created by SM! copy&; 2022",
+    "contact_information": "Contact information",
+    "my_email": "My email",
+    "my_phone": "My phone number",
+    "about_me": "About me",
+    "send_email": "Send an email!",
+    "give_a_call": "Give me a call(Whatsapp/Viber)!",
+    "read_more": "Read more!",
+    "read_text1": "My name is Svetozar Miskovic, I am 24 years old and I work and live in Bosnia and Herzegovina, Banja Luka.",
+    "read_text2": "I've been 1y in Software Development and I've gained knowledge of JS, HTML, CSS and React!",
+    "read_text3": "For any questions, feel free to reach out to me",
+    "copy_alert": "Successfully copied",
+    "under_construction": "UNDER CONSTRUCTION",
+    "site_under_construction": "This page is still under construction!",
+    "choose_package": "Choose a package",
+    "form_builder": "Form Builder",
+    "fbuilder_desc1": "Build a form",
+    "fbuilder_desc2": "the way you need it"
+    
+}

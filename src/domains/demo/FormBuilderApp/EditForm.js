@@ -1,6 +1,12 @@
 import React from 'react';
+import '../../../styles/InputHolder.css'
 import FormInfo from './Edit&Holder comps/FormInfo';
 import SingleInput from './Edit&Holder comps/SingleInput';
+import {Form, Button, Typography} from 'antd'
+import AddInput from './AddInput';
+
+const {Title} = Typography
+
 function EditForm(props) {
   let editInputs = props.formEdit.inputs;
 
@@ -75,11 +81,12 @@ function EditForm(props) {
     });
   }
   return (
-    <form
+    <Form
+    style={{display: 'flex', gap: '0',flexDirection: 'row',width: '100%',height: '100%', backgroundColor: '#2375ab',}}
       id={props.formEdit.formID}
       autoComplete="off"
-      onSubmit={e => {
-        e.preventDefault(); 
+      onFinish={e => {
+      
         const newForms = props.forms.filter(form=>form.formID !== props.formEdit.formID)         
         newForms.push(props.formEdit)
         props.setForms(newForms)
@@ -87,21 +94,28 @@ function EditForm(props) {
         props.setIsEditing(!props.isEditing);
       }}
     >
-      <h1 className="edit-mode">EDIT MODE!</h1>
-      <FormInfo name={props.formEdit.formName} changeName={setEditName} changeDesc={setEditDesc} desc={props.formEdit.formDesc}/>
-      
-      {props.formEdit.inputs?.map(inp => {
-        return (
-          <SingleInput key={inp.id} inp={inp} setPlaceholder={setEditPlaceholder} toggleEdit={switchEdit} deleteInput={deleteEditInput} setType={props.setType} sugTypes={props.sugTypes}/>
-          
-        );
-      })}
-      <input
-        type="submit"
+      <div className='form-options' style={{width: 'fit-content', display: 'flex', flexDirection: 'column'
+     , alignItems: 'center', borderRight: '0.7px solid white'}}>
+       <Title level={2} style={{color: 'white', margin: '0', fontSize: '1.4rem'}}>EDIT MODE</Title>
+       <AddInput inputs={props.inputs} setInputs={props.setInputs} forms={props.forms} formEdit={props.formEdit} setFormEdit={props.setFormEdit} isEditing={props.isEditing}/>
+      <Button
+      style={{ cursor: 'pointer' , fontWeight: 'bolder',  textAlign: 'center', fontSize: '1rem', alignSelf: 'center', color: '#2375ab',}}
+        htmlType="submit"
         className="submit-form"
-        value="Save the edited form!"
-      ></input>
-    </form>
+        
+      >Submit the form!</Button>
+      
+      </div>
+      <div className='form-fields' style={{width: '100%'}}>
+        <FormInfo name={props.formEdit.formName} changeName={setEditName} changeDesc={setEditDesc} desc={props.formEdit.formDesc}/>
+        {props.formEdit.inputs?.map(inp => {
+          return (
+            <SingleInput key={inp.id} inp={inp} setPlaceholder={setEditPlaceholder} toggleEdit={switchEdit} deleteInput={deleteEditInput} setType={props.setType} sugTypes={props.sugTypes}/>
+            
+          );
+        })}
+      </div>
+    </Form>
   );
 }
 

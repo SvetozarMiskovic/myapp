@@ -1,11 +1,15 @@
 import React from 'react';
+import { Typography } from 'antd';
 import '../../../styles/AddInput.css';
+
+const {Title} = Typography
 
 function AddInput(props) {
   return (
-    <div className="add-input">
-      <h3>Create an input field!</h3>
+    <div className="add-input" style={{width: '100%'}}>
+      
       <span
+      style={{display: 'flex', alignItems: 'center', width: '100%', justifyContent: 'center', gap: '0.5rem',  padding: '0.6rem 0 0.6rem 0',  cursor: 'pointer'}}
         onClick={() => {
           if(props.isEditing){
             const uID = new Date().getTime();
@@ -38,9 +42,9 @@ function AddInput(props) {
           });
         }
         }}
-
-      >
-        <i className="far fa-plus-square"></i>
+        >
+        <i className="far fa-plus-square" style={{fontSize: '1.2rem'}}></i>
+        <Title level={3} style={{ margin: 0, fontSize: '1.2rem'}} className='addinput-title'>Add input</Title>
       </span>
     </div>
   );

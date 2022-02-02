@@ -1,3 +1,23 @@
 .form-builder {
-  width: 40%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  position: relative;
+  
+}
+
+.formbuilder-main, .formbuilder-forms{
+  width: 100%;
+  
+
+}
+.formbuilder-main{
+  margin: 0.5rem;
+  background-color: #2375ab;
+}
+.formbuilder-forms{
+  margin-right: 0.5rem;
+  padding: 0;
 }

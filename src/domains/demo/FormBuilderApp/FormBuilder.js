@@ -92,19 +92,8 @@ function FormBuilder(props) {
 
   return (
     <div className="form-builder">
-      <AddInput inputs={inputs} setInputs={setInputs} forms={forms} formEdit={formEdit} setFormEdit={setFormEdit} isEditing={props.isEditing}/>
-      {forms.length > 0 ? (
-        <FormList
-          isEditing={props.isEditing}
-          setIsEditing={props.setIsEditing}
-          forms={forms}
-          setForms={setForms}
-          deleteForm={deleteFormHandler}
-          setSelectedForm={props.setSelectedForm}
-          formEdit={formEdit}
-          setFormEdit={setFormEdit}
-        />
-      ) : null}
+      <div className='formbuilder-main' style={{width: '100%', height: 'auto'}}>
+   
       {!props.isEditing ? (
         <InputHolder
           initialInfo={initialInfo}
@@ -120,6 +109,7 @@ function FormBuilder(props) {
           inputs={inputs}
           forms={forms}
           setForms={setForms}
+          formEdit={formEdit}
         />
       ) : (
         <EditForm
@@ -132,6 +122,23 @@ function FormBuilder(props) {
           setForms={setForms}
         />
       )}
+      </div>
+   
+      
+      <div className='formbuilder-forms'>
+      
+        <FormList
+          isEditing={props.isEditing}
+          setIsEditing={props.setIsEditing}
+          forms={forms}
+          setForms={setForms}
+          deleteForm={deleteFormHandler}
+          setSelectedForm={props.setSelectedForm}
+          formEdit={formEdit}
+          setFormEdit={setFormEdit}
+        />
+      
+      </div>
     </div>
   );
 }

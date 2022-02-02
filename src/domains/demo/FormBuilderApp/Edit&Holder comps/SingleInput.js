@@ -5,7 +5,7 @@ import PickType from "./PickType";
 
 function SingleInput(props){
     return(
-        <div key={props.inp.id} className="single-input">
+        <div key={props.inp.id} className="single-input" style={{width: '100%', padding: ' 0 1rem 0.5rem 1rem', }}>
         <InputField inp={props.inp} setPlaceholder={props.setPlaceholder}/>
         <Buttons inp={props.inp} toggleEdit={props.toggleEdit} deleteInput={props.deleteInput}/>
         

@@ -1,9 +1,15 @@
 import React from "react";
+import {Input, Space, Typography} from "antd"
+
+const {Title} = Typography
 
 function FormInfo(props){
     return(
-<div className="form-info">
-        <input
+<Space className="form-info" direction="vertical" style={{width: '100%',  padding: '1rem', borderBottom: '1px solid white', marginBottom: '0.4rem'}}>
+  <Title level={3} style={{color: 'white'}}>Form information</Title>
+        <Input
+        style={{width: '100%'}}
+        placeholder="Name of the form"
           type={'text'}
           className="form-name"
           onBlur={(e)=>{
@@ -27,8 +33,9 @@ function FormInfo(props){
            
         >
           
-        </input>
-        <input
+        </Input>
+        <Input
+        style={{width: '100%'}}
           type={'text'}
           className="form-desc"
           onBlur={(e)=>{
@@ -51,8 +58,8 @@ function FormInfo(props){
            
         >
           
-        </input>
-      </div>
+        </Input>
+      </Space>
     )
 }
 

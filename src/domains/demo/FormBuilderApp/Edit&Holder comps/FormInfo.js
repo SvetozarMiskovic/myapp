@@ -8,7 +8,7 @@ function FormInfo(props){
 <Space className="form-info" direction="vertical" style={{width: '100%',  padding: '1rem', borderBottom: '1px solid white', marginBottom: '0.4rem'}}>
   <Title level={3} style={{color: 'white'}}>Form information</Title>
         <Input
-        style={{width: '100%'}}
+        style={{width: '100%', fontWeight: 'bold'}}
         placeholder="Name of the form"
           type={'text'}
           className="form-name"
@@ -35,7 +35,7 @@ function FormInfo(props){
           
         </Input>
         <Input
-        style={{width: '100%'}}
+        style={{width: '100%', fontWeight: 'bold'}}
           type={'text'}
           className="form-desc"
           onBlur={(e)=>{

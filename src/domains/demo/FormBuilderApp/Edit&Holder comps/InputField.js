@@ -4,6 +4,7 @@ function InputField(props){
     return(
         <input
           className="input-field"
+          style={{fontWeight: 'bolder'}}
           id={props.inp.id}
           placeholder={props.inp.placeholder}
           type={props.inp.type}

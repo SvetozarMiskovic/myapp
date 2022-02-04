@@ -1,13 +1,17 @@
+import {Form, Button, Typography, Input, Space} from 'antd';
 import React from 'react';
 import '../../../styles/DisplayForm.css';
 
+const {Title} = Typography
+
 function DisplayForm(props) {
   return (
-    <form
+    <Form
       className="display-form"
+      style={{backgroundColor: '#2375ab', width: '100%', position: 'relative', overflowY: 'auto'}}
       id={props.selectedForm.formID}
-      onSubmit={e => {
-        e.preventDefault();
+      onFinish={e => {
+       
         const name = document.querySelector('.display-form-name').textContent;
         const desc = document.querySelector('.display-form-desc').textContent;
         const fields = [...document.querySelectorAll('.display-form-input')];
@@ -32,28 +36,33 @@ function DisplayForm(props) {
         alert('Succesfully saved to local storage!');
       }}
     >
-      <h2 className="display-form-name">{props.selectedForm.formName}</h2>
-      <h4 className="display-form-desc">{props.selectedForm.formDesc}</h4>
-      <ul className="display-form-list">
-        <hr className="display-form-hr"></hr>
+      <Space direction='vertical' className='display-form-info' style={{marginBottom: '1rem',padding: '1rem', borderBottom: '1px solid white', width: '100%'}}> 
+        <Title level={2} style={{margin: 0, padding: 0, color: 'white'}}className="display-form-name">{props.selectedForm.formName}</Title>
+        <Title level={3} style={{margin: 0, padding: 0, color: 'white'}}className="display-form-desc">{props.selectedForm.formDesc}</Title>
+      </Space>
+      
+      <ul className="display-form-list" style={{margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly', alignContent: 'center'}}>
+        
         {props.selectedForm.inputs.map(i => {
           return (
-            <input
+            <Input
               key={i.id}
               className="display-form-input"
               type={i.type}
               placeholder={i.placeholder}
               id={i.id}
-            ></input>
+              style={{fontSize: '1.5rem', width: 'auto', padding: 0, margin: '1rem'}}
+            ></Input>
           );
         })}
       </ul>
-      <input
-        type="submit"
+      <Button
+      style={{color: '#2375ab', padding: '1.5rem',fontSize: '1.3rem',textAlign:'center', margin: '0.8rem', display: 'flex', alignItems: 'center'}}
+        htmlType="submit"
         className="submit-form"
         value="Send the form!"
-      ></input>
-    </form>
+      >Send the form</Button>
+    </Form>
   );
 }
 

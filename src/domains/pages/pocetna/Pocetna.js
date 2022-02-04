@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import '../../../styles/Pocetna.css';
 import { Layout,Card, Typography, Menu, Dropdown, Button} from 'antd';
-import {HomeFilled, FolderOpenFilled, ToolFilled, GithubFilled, InstagramFilled, FacebookFilled, MailFilled, SendOutlined, PhoneFilled, CopyOutlined, InfoCircleOutlined, GlobalOutlined } from '@ant-design/icons'
+import {HomeFilled, FolderOpenFilled, ToolFilled, GithubFilled, InstagramFilled, FacebookFilled, MailFilled, SendOutlined, PhoneFilled, CopyOutlined, InfoCircleOutlined, GlobalOutlined, MenuOutlined, CloseSquareOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom';
 import i18next from 'i18next';
 import SucAlert from './SucAlert';
@@ -24,6 +24,15 @@ const languages = [{
 function Pocetna(props) {
   const {t} = useTranslation();
   const [alert, isAlert] = useState(false)
+  const [isMobile, setisMobile] = useState(false)
+
+  function openMobile(){
+    setisMobile(true)
+  }
+
+  function closeMobile(){
+    setisMobile(false)
+  }
 
   const langMenu=(
     <Menu style={{textAlign: 'center'}}>
@@ -77,33 +86,37 @@ function Pocetna(props) {
 
   return (
     <div className="pocetna">
-      {alert ? <SucAlert alert={alert} isAlert={isAlert}/> : null}
-      <Layout className='layout-homepage'>
-    <Sider className='sidebar' >
       
-        <div className='header-homepage'>
-          
+      {alert ? <SucAlert alert={alert} isAlert={isAlert}/> : null}
+     
+      <Layout className='layout-homepage'>
+      
+    <Sider className='sidebar' style={{display:'flex',flexDirection: 'column', maxWidth: 'none', minWidth: 'none', width:'100%',  zIndex: 15}}>
+    
+        <div className='header-homepage' style={{width: '100%'}}>
+        <CloseSquareOutlined style={{ fontSize: '2rem', color: 'white', width: '2rem'}} className={'close-menu'} onClick={()=>{
+          document.querySelector('.sidebar').style.display= 'none'
+        }}/>
           <div className='logo'></div>
           <Title level={2} style={{margin: 0}}>Front-end Dev</Title>
           <Title level={3} style={{margin: 0}}>Javascript/React</Title>
         </div>
-        <div className='links-menu'>
-          <ul>
-            <div className='single-link'>
-              <HomeFilled className='home-filled'/>
-            <Link to='/myapp' className='home-link'>{t('home')}</Link>
-            </div>
-            <div className='single-link'>
-            <FolderOpenFilled className='folder-open'/>
-              <Link to='/npm-packages' className='pkg-link'>{t('packages')}</Link>
-            </div>
-            <div className='single-link'>
-            <ToolFilled className='tool-filled'/>
-              <Link to='/tools' className='tool-link'>{t('tools')}</Link>
-            </div>
+       <div  style={{backgroundColor: '#fff', height: '100%', overflow: 'hidden',}}>
+          <ul style={{width: '100%', height: '100%',margin: 0, display: 'flex', padding: 0,  flexDirection: 'column', listStyle: 'none', height: 'fit-content'}}>
+          <Link to='/myapp' style={{margin: 0, padding: '1rem', borderBottom: '1px solid #2375ab', }} className='single-link home-link'>
+            <HomeFilled className='home-filled' style={{marginRight: '0.5rem'}}/>{t('home')}
+          </Link> 
+          <Link to='/npm-packages' style={{margin: 0, padding: '1rem', borderBottom: '1px solid #2375ab', }}  className='single-link pkg-link'>
+            <FolderOpenFilled className='folder-open' style={{marginRight: '0.5rem'}}/>{t('packages')}
+          </Link>
+               
+          <Link to='/tools' style={{margin: 0, padding: '1rem', borderBottom: '1px solid #2375ab', }} className='single-link tool-link'>
+            <ToolFilled className='tool-filled' style={{marginRight: '0.5rem'}}/> {t('tools')}
+          </Link>
             
             
           </ul>
+          </div>
           <Footer className='footer-sidebar'>
             <div className='media-links'>
             <div className='github'>
@@ -125,10 +138,14 @@ function Pocetna(props) {
             </div>
             <Title style={{fontSize: '1rem ', margin: 0, color: 'white'}} level={4} className='created-by'>Created by SM! &copy;2022</Title>
           </Footer>
-        </div>
         
+          
     </Sider>
+    <MenuOutlined style={{color:'#2375ab', fontSize: '3rem',cursor: 'pointer', margin: '0.4rem',height: '2rem', width: '2rem',  zIndex: 16, position:'absolute',top: '1.5rem', left:'2rem',}} className='menu-icon' onClick={()=>{
+        document.querySelector('.sidebar').style.display= 'block'
+      }}/>
     <Content className='main-content'>
+   
       <Dropdown overlay={langMenu} placement='bottomCenter' trigger={['click']} className='lang-dropdown'>
         <GlobalOutlined style={{position: 'absolute', fontSize: '3rem', zIndex: 5, top: '2rem', right: '2rem', color: '#2375ab', cursor: 'pointer'}}/>
       </Dropdown>
@@ -161,7 +178,7 @@ function Pocetna(props) {
               <InfoCircleOutlined style={{color: '#2375ab', fontSize:'1.6rem'}}/>
               <Title level={4} style={{margin: '0 0 0 0.3rem', padding: 0, fontSize: '1.6rem', color:'#2375ab'}}>{t('about_me')}</Title>
             </div>
-            <Dropdown overlay={aboutMenu} placement='bottomLeft' className='about-dropdown' arrow>
+            <Dropdown overlay={aboutMenu} placement='bottomCenter' className='about-dropdown' arrow>
             
                  <Button style={{color: '#2375ab'} } className='send-btn'>{t('read_more')}</Button>
               

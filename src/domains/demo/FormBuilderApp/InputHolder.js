@@ -21,7 +21,7 @@ function InputHolder(props) {
   }
   return (
     <Form
-    style={{display: 'flex', gap: '0',flexDirection: 'row',width: '100%',height: '100%', backgroundColor: '#2375ab',}}
+    style={{display: 'flex', gap: '0',flexDirection: 'row',width: '100%', backgroundColor: '#2375ab'}}
       autoComplete="off"
       onFinish={e => {
         

@@ -102,7 +102,9 @@ function Pocetna(props) {
           <Title level={3} style={{margin: 0}}>Javascript/React</Title>
         </div>
        <div  style={{backgroundColor: '#fff', height: '100%', overflow: 'hidden',}}>
-          <ul style={{width: '100%', height: '100%',margin: 0, display: 'flex', padding: 0,  flexDirection: 'column', listStyle: 'none', height: 'fit-content'}}>
+          <ul style={{width: '100%', height: '100%',margin: 0, display: 'flex', padding: 0,  flexDirection: 'column', listStyle: 'none', height: 'fit-content'}} onClick={()=>{
+            document.querySelector('.sidebar').style.display= 'none'
+          }} >
           <Link to='/myapp' style={{margin: 0, padding: '1rem', borderBottom: '1px solid #2375ab', }} className='single-link home-link'>
             <HomeFilled className='home-filled' style={{marginRight: '0.5rem'}}/>{t('home')}
           </Link> 

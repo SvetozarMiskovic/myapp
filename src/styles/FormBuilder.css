@@ -1,11 +1,11 @@
 .form-builder {
   width: 100%;
-  height: 100%;
+  
   display: flex;
   align-items: flex-start;
   justify-content: space-around;
   position: relative;
-  
+  overflow-x: hidden;
 }
 
 .formbuilder-main, .formbuilder-forms{
@@ -20,4 +20,14 @@
 .formbuilder-forms{
   margin-right: 0.5rem;
   padding: 0;
+}
+
+
+@media (max-width: 768px){
+  .form-builder{
+    display: flex;
+    flex-direction: column;
+  }
+
+  
 }

@@ -49,7 +49,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
+  
 }
 
 .package-container{
@@ -74,4 +74,13 @@
 .fb-cont{
   transform: scale(1);
   transition: ease-out 0.3s;
+}
+
+@media (max-width: 768px){
+  .sidebar{
+    display: none;
+  }
+  .packages-page{
+    display: block;
+  }
 }

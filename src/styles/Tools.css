@@ -26,3 +26,9 @@
     align-items: center;
     gap: 2rem;
 }
+
+@media (max-width: 900px) {
+    .tools-info{
+        width: auto;
+    }
+}

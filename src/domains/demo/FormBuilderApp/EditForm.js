@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../../styles/InputHolder.css'
+import { useTranslation } from 'react-i18next';
 import FormInfo from './Edit&Holder comps/FormInfo';
 import SingleInput from './Edit&Holder comps/SingleInput';
 import {Form, Button, Typography} from 'antd'
@@ -8,6 +9,7 @@ import AddInput from './AddInput';
 const {Title} = Typography
 
 function EditForm(props) {
+  const {t} = useTranslation()
   let editInputs = props.formEdit.inputs;
 
   function switchEdit(id) {
@@ -103,7 +105,7 @@ function EditForm(props) {
         htmlType="submit"
         className="submit-form"
         
-      >Submit the form!</Button>
+      >{t('sub_form')}</Button>
       
       </div>
       <div className='form-fields' style={{width: '100%'}}>

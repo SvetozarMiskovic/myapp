@@ -16,4 +16,13 @@
 
 .tools-info{
     width: fit-content;
+    display: flex; 
+    flex-direction: column
+}
+
+.tools-info .ant-card-body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
 }

@@ -243,18 +243,22 @@ font-size: 1.2rem;
 .close-menu{
   display: none
 }
-@media  (max-width: 768px) {
+@media  (max-width: 900px) {
     .sidebar{
       z-index: 1;
-       
+      display: block;
     }
   
     .menu-icon{
       display: block;
       
     }
-   
+    
+   .ant-layout-sider{
+     display: none;
+   }
   .ant-layout-sider-children{
+    /* display: none; */
     width: 100vw;
   }
   

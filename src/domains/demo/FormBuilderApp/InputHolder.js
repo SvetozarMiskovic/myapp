@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import '../../../styles/InputHolder.css';
 import FormInfo from './Edit&Holder comps/FormInfo';
 import SingleInput from './Edit&Holder comps/SingleInput';
@@ -7,6 +8,7 @@ import {Form, Button} from 'antd'
 
 
 function InputHolder(props) {
+  const {t}= useTranslation();
   const [name, setName] = useState('Name of the form')
   const [desc, setDesc] = useState('Description of the form')
    useEffect(() => {
@@ -69,7 +71,7 @@ function InputHolder(props) {
         htmlType='submit'
         className="submit-form"
         
-      >Submit the form!</Button> 
+      >{t('sub_form')}</Button> 
      
       </div>
        

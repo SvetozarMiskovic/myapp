@@ -1,12 +1,14 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import {Input, Space, Typography} from "antd"
 
 const {Title} = Typography
 
 function FormInfo(props){
+  const {t} = useTranslation()
     return(
 <Space className="form-info" direction="vertical" style={{width: '100%',  padding: '1rem', borderBottom: '1px solid white', marginBottom: '0.4rem'}}>
-  <Title level={3} style={{color: 'white'}}>Form information</Title>
+  <Title level={3} style={{color: 'white'}}>{t('form_info')}</Title>
         <Input
         style={{width: '100%', fontWeight: 'bold'}}
         placeholder="Name of the form"

@@ -19,6 +19,15 @@
     "choose_package": "Choose a package",
     "form_builder": "Form Builder",
     "fbuilder_desc1": "Build a form",
-    "fbuilder_desc2": "the way you need it"
-    
+    "fbuilder_desc2": "the way you need it",
+    "sub_form": "Submit form",
+    "add_inp": "Add input",
+    "form_info": "Form information",
+    "saved_forms": "Saved forms",
+    "no_saved_forms": "There are no saved forms!",
+    "empty_list": "The list is empty!",
+    "delete_all": "Delete all",
+    "choose_inp_type": "Choose input type",
+    "send_form": "Send form"
+
 }

@@ -1,10 +1,12 @@
 import {Form, Button, Typography, Input, Space} from 'antd';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import '../../../styles/DisplayForm.css';
 
 const {Title} = Typography
 
 function DisplayForm(props) {
+  const{t} = useTranslation()
   return (
     <Form
       className="display-form"
@@ -61,7 +63,7 @@ function DisplayForm(props) {
         htmlType="submit"
         className="submit-form"
         value="Send the form!"
-      >Send the form</Button>
+      >{t('send_form')}</Button>
     </Form>
   );
 }

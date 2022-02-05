@@ -19,5 +19,14 @@
     "choose_package": "Odaberite paket",
     "form_builder": "Form Builder",
     "fbuilder_desc1": "Napravite formu",
-    "fbuilder_desc2": "prema vasim potrebama"
+    "fbuilder_desc2": "prema vasim potrebama",
+    "sub_form": "Snimi formu",
+    "add_inp": "Dodaj input",
+    "form_info": "Informacije forme",
+    "saved_forms": "Sacuvane forme",
+    "no_saved_forms": "Nema sacuvanih formi!",
+    "empty_list": "Lista je prazna!",
+    "delete_all": "Obrisi sve",
+    "choose_inp_type": "Odaberi tip inputa",
+    "send_form": "Posalji formu"
 }

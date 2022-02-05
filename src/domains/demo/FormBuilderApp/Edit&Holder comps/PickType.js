@@ -1,10 +1,12 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 function PickType(props){
+  const {t} = useTranslation()
     return(
         <div className="edit-pick">
             <ul id={props.inp.id} className="edit-list">
-              <p>Choose input type!</p>
+              <p>{t('choose_inp_type')}</p>
               {props.sugTypes.map(t => {
                 return (
                   <div

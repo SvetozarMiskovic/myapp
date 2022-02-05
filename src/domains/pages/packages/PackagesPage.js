@@ -39,9 +39,9 @@ function PackagesPage() {
   return (
     <div className="packages-page" >
       <Layout className='layout-packages'>
-       <Sider className='sidebar' style={{display:'flex',flexDirection: 'column', maxWidth: 'none', minWidth: 'none', width:'100%',  zIndex: 15}}>
+       <Sider className='sidebar' style={{ maxWidth: 'none', minWidth: 'none', width:'100%',  zIndex: 15}}>
       
-        <div className='header-layout'>
+        <div className='header-layout' style={{width: '100%'}}>
         <CloseSquareOutlined style={{ fontSize: '2rem', color: 'white', width: '2rem'}} className={'close-menu'} onClick={()=>{
           document.querySelector('.sidebar').style.display= 'none'
         }}/>
@@ -50,9 +50,7 @@ function PackagesPage() {
           <Title level={3} style={{margin: 0}}>Javascript/React</Title>
         </div>
         <div  style={{backgroundColor: '#fff', height: '100%', overflow: 'hidden',}}>
-          <ul style={{width: '100%', height: '100%',margin: 0, display: 'flex', padding: 0,  flexDirection: 'column', listStyle: 'none', height: 'fit-content'}} onClick={()=>{
-            document.querySelector('.sidebar').style.display= 'none'
-          }} >
+          <ul style={{width: '100%', margin: 0, display: 'flex', padding: 0,  flexDirection: 'column', listStyle: 'none', height: 'fit-content'}}  >
             
               
             <Link to='/myapp' style={{margin: 0, padding: '1rem', borderBottom: '1px solid #2375ab', }}  className='single-link home-link'>
@@ -109,7 +107,7 @@ function PackagesPage() {
         
       } headStyle={{borderBottom:'1px solid white', color: 'white', fontSize: '1.2rem', fontWeight: 'bolder'}} bordered='false' style={{zIndex: '0' ,width: '100%', backgroundColor: "#2375ab", position:'relative'}} className='package-container'>
         
-        <MenuOutlined className='menu-icon' style={{position: 'absolute', top: '1rem', right: '10rem', fontSize: '2rem', color:'white',cursor:'pointer'}} onClick={()=>{
+        <MenuOutlined className='menu-icon' style={{position: 'absolute', top: '1rem', right: '7rem', fontSize: '2rem', color:'white',cursor:'pointer'}} onClick={()=>{
           document.querySelector('.sidebar').style.display = 'block'
         }}/>
         <ul style={{width: '100%', height: '100%', display: 'flex',margin: 0, justifyContent: 'start', alignContent: 'center', textAlign: 'center'}}>

@@ -58,8 +58,8 @@
 }
 
 .packages-display{
-  max-height: 100%;
-  
+ 
+  height: inherit;
   
   
 }

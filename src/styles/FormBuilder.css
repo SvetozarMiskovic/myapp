@@ -1,6 +1,6 @@
 .form-builder {
   width: 100%;
-  
+  height: auto;
   display: flex;
   align-items: flex-start;
   justify-content: space-around;
@@ -16,6 +16,7 @@
 .formbuilder-main{
   margin: 0.5rem;
   background-color: #2375ab;
+  height: auto;
 }
 .formbuilder-forms{
   margin-right: 0.5rem;
